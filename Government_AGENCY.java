@@ -808,5 +808,35 @@ public class Government_AGENCY {
                                     Thread.sleep(500);
                                     System.out.println("\t\t\t\t\t\t\t\t==================================================");
     }
-    
+      public void Death(){
+    	 System.out.println("\t\t\t\t\t1a. First Name: " + DAdmin_Store.get("1a" + StorageDeath.getfirstName()));
+         System.out.println("\t\t\t\t\t1b. Middle Name: "  + DAdmin_Store.get("1b" + StorageDeath.getmiddleName()));
+         System.out.println("\t\t\t\t\t1c. Last Name: "  + DAdmin_Store.get("1c" + StorageDeath.getlastName()));
+         System.out.println("\t\t\t\t\t2.Sex (M/F): " + DAdmin_Store.get("2" + StorageDeath.getsex()));
+         System.out.println("\t\t\t\t\t3. Date of Death (DD/MM/YYYY): " + DAdmin_Store.get("3" + StorageDeath.getdateOfDeath()));
+	 System.out.println("\t\t\t\t\t4. Date of Birth (DD/MM/YYYY): " + DAdmin_Store.get("4" + StorageDeath.getdateOfBirth()));
+	 System.out.println("\t\t\t\t\t5. Age at the time of death: " + DAdmin_Store.get("5" + StorageDeath.getageAtDeath()));
+	 System.out.println("\t\t\t\t\t6. Place of Death: " + DAdmin_Store.get("6" + StorageDeath.getplaceOfDeath()));
+	 System.out.println("\t\t\t\t\t7. Civil Status: " + DAdmin_Store.get("7" + StorageDeath.getcivilStatus()));
+	 System.out.println("\t\t\t\t\t8. Religion: " + DAdmin_Store.get("8" + StorageDeath.getreligion()));
+	 System.out.println("\t\t\t\t\t9. Citizenship: " + DAdmin_Store.get("9" + StorageDeath.getcitizenship()));
+	 System.out.println("\t\t\t\t\t10. Occupation: " + DAdmin_Store.get("10" + StorageDeath.getoccupation()));
+	 System.out.println("\t\t\t\t\t11. Residence: " + DAdmin_Store.get("" + StorageDeath.getresidence()));
+	 System.out.println("\t\t\t\t\t12. Name of Father (First, Middle, Last): " + DAdmin_Store.get("12" + StorageDeath.getfatherName()));
+	 System.out.println("\t\t\t\t\t13. Name of Mother (First, Middle, Last): " + DAdmin_Store.get("13" + StorageDeath.getmotherName()));
+	 System.out.println("\t\t\t\t\t14. Age of Mother: " + DAdmin_Store.get("14" +  StorageDeath.getageOfmother()));
+	 System.out.println("\t\t\t\t\t15. Method of delivery(Normal spontaneus vertex, if others, specify): " + DAdmin_Store.get(StorageDeath.mdelivery()));
+	 System.out.println("\t\t\t\t\t16. Length of pregnancy(In completed weeks):" + lengthOfPreg);
+	 System.out.println("\t\t\t\t\t17. Type of birth (Single, Twin, Triplet, etc.): " + DAdmin_Store.get("17" + StorageDeath.gettypeOfbirth()));
+	 System.out.println("\t\t\t\t\t18. If multiple birth child was(first, Second, Third, Others):" + DAdmin_Store.get(StorageDeath.multiBirth());
+	 System.out.println("\t\t\t\t\t19a. Cause of Death: " + DAdmin_Store.get(StorageDeath.causeOfDeath);
+	 System.out.println("\t\t\t\t\t19b. Cause of Death: " + DAdmin_Store.get(StorageDeath.causeD);
+             System.out.println("\t\t\t\t\t19c. Maternal Condition:" + DAdmin_Store.get(StorageDeath.maternalCondition);
+             System.out.println("\t\t\t\t\t19d. Death by External causes:" + DAdmin_Store.get(StorageDeath.DExternal());
+             System.out.println("\t\t\t\t\t19e. Cause of Death: " + cause);
+	 System.out.println("\t\t\t\t\t21a. Attendant: " + attendant);
+	 System.out.println("\t\t\t\t\t21b. If attendant press [Y] the state duration(MM/DD/YY), else [N] " + duration);
+		
+        
+    }
 }
