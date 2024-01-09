@@ -711,7 +711,38 @@ public class Admin extends Birth_Storage{
     }
     
     public void Death(){
-        
+              public void Death(){
+    	 System.out.println("\t\t\t\t\t1a. First Name: " + DAdmin_Store.get("1a" + StorageDeath.getInfo()));
+         System.out.println("\t\t\t\t\t1b. Middle Name: "  + DAdmin_Store.get("1b" + StorageDeath.getInfo()));
+         System.out.println("\t\t\t\t\t1c. Last Name: "  + DAdmin_Store.get("1c" + StorageDeath.getInfo()));
+         System.out.println("\t\t\t\t\t2.Sex (M/F): " + DAdmin_Store.get("2" + StorageDeath.getInfo()));
+         System.out.println("\t\t\t\t\t3. Date of Death (DD/MM/YYYY): " + DAdmin_Store.get("3" + StorageDeath.getInfo()));
+        	 System.out.println("\t\t\t\t\t4. Date of Birth (DD/MM/YYYY): " + DAdmin_Store.get("4" + StorageDeath.getInfo()));
+        	 System.out.println("\t\t\t\t\t5. Age at the time of death: " + DAdmin_Store.get("5" + StorageDeath.getInfo()));
+        	 System.out.println("\t\t\t\t\t6. Place of Death: " + DAdmin_Store.get("6" + StorageDeath.getInfo()));
+        	 System.out.println("\t\t\t\t\t7. Civil Status: " + DAdmin_Store.get("7" + StorageDeath.getInfo()));
+        	 System.out.println("\t\t\t\t\t8. Religion: " + DAdmin_Store.get("8" + StorageDeath.getInfo()));
+        	 System.out.println("\t\t\t\t\t9. Citizenship: " + DAdmin_Store.get("9" + StorageDeath.getInfo()));
+        	 System.out.println("\t\t\t\t\t10. Occupation: " + DAdmin_Store.get("10" + StorageDeath.getInfo()));
+        	 System.out.println("\t\t\t\t\t11. Residence: " + DAdmin_Store.get("11" + StorageDeath.getInfo()));
+        	 System.out.println("\t\t\t\t\t12. Name of Father (First, Middle, Last): " + DAdmin_Store.get("12" + StorageDeath.getInfo()));
+        	 System.out.println("\t\t\t\t\t13. Name of Mother (First, Middle, Last): " + DAdmin_Store.get("13" + StorageDeath.getInfo()));
+        	 System.out.println("\t\t\t\t\t14. Age of Mother: " + DAdmin_Store.get("14" +  StorageDeath.getInfo()));
+        	 System.out.println("\t\t\t\t\t15. Method of delivery(Normal spontaneus vertex, if others, specify): " + DAdmin_Store.get("15" + StorageDeath.getInfo()));
+        	 System.out.println("\t\t\t\t\t16. Length of pregnancy(In completed weeks):" + DAdmin_Store.get("16" + StorageDeath.getInfo()));
+        	 System.out.println("\t\t\t\t\t17. Type of birth (Single, Twin, Triplet, etc.): " + DAdmin_Store.get("17" + StorageDeath.getInfo()));
+        	 System.out.println("\t\t\t\t\t18. If multiple birth child was(first, Second, Third, Others):" + DAdmin_Store.get("18" + StorageDeath.getInfo());
+        	 System.out.println("\t\t\t\t\t19a. Cause of Death: " + DAdmin_Store.get("19a" + StorageDeath.getInfo());
+        	 System.out.println("\t\t\t\t\t19b. Cause of Death: " + DAdmin_Store.get("19b" + StorageDeath.getInfo());
+             System.out.println("\t\t\t\t\t19c. Maternal Condition:" + DAdmin_Store.get("19c" + StorageDeath.getInfo());
+             System.out.println("\t\t\t\t\t19d. Death by External causes:" + DAdmin_Store.get("19d" + StorageDeath.getInfo());
+             System.out.println("\t\t\t\t\t19e. Cause of Death: " + DAdmin_Store.get("19e" + StorageDeath.getInfo()));
+        	 System.out.println("\t\t\t\t\t20a. Attendant: " + DAdmin_Store.get("20a" + StorageDeath.getInfo()));
+        	 System.out.println("\t\t\t\t\t20b. If attendant press [Y] the state duration(MM/DD/YY), else [N] " + DAdmin_Store.get("20b" + StorageDeath.getInfo()));
+
+
+    }
+}
        
         switch(Ans){
             
