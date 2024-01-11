@@ -5,12 +5,11 @@ import java.util.*;
 
 public class Birth_Storage extends Birth {
   
-    public LinkedHashMap <String, String>BStore  = new LinkedHashMap();
-    public static Queue <String> BS = new LinkedList();
-    private String Name;
-    private int Navi;
     public LinkedHashMap <String, String> BBStore = new LinkedHashMap();
+    public LinkedHashMap <String, String>BStore  = new LinkedHashMap();
+    public Queue <String> BS = new LinkedList();
     
+    private String Name;
     
     public void setName(String Name){
         this.Name = Name;
