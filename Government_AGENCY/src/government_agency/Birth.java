@@ -35,7 +35,6 @@ public class Birth extends Exception {
     private static String Fname;//
     private static String Lname;//
     private static String Mname;//
-    //private static int Age;//
     private static String BP;//
     private static String suff;//
     private static String BG;//
@@ -59,9 +58,6 @@ public class Birth extends Exception {
     public void setMname(String Mname){
         this.Mname = Mname;
     }
-    //public void setAge(int Age){
-     //   this.Age = Age;
-    //}
     public void setBP(String BP){
         this.BP = BP;
     }
@@ -108,9 +104,6 @@ public class Birth extends Exception {
      public String getMname(){
         return this.Mname;
     }
-    //public int getAge(){
-    //    return this.Age;
-    //}
      public String getBP(){
         return this.BP;
     }
@@ -281,10 +274,10 @@ public class Birth extends Exception {
                    Scanner scn = new Scanner(System.in);
         
                    System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
-                   System.out.println("\t\t\t\t\t\t\t\t\t\tChild information");
+                   System.out.println("\t\t\t\t\t\t\t\t\t\tBirth Resgistration");
                    System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
                    
-                   System.out.println("\t\t\t\t\t\t\t\t\t\tBirth Resgistration");
+                   System.out.println("\t\t\t\t\t\t\t\t\t\tChild Information");
                    System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
 
                    System.out.print("\t\t\t\t1A. Child First Name: ");
@@ -302,10 +295,6 @@ public class Birth extends Exception {
                    System.out.print("\t\t\t\t4A. Child Suffix (NA if not have): ");
                    suff = scn.next().toUpperCase();
                    setSuff(suff);
-                   
-                   //System.out.print("\t\t\t\t5A. Child Age: ");
-                   //Age = scn.nextInt();
-                   //setAge(Age);
                    
                    System.out.print("\t\t\t\t6A. Child Birthday(MM/DD/YYYY): ");
                    BD = scn.next();
@@ -331,21 +320,17 @@ public class Birth extends Exception {
                    System.out.print("\t\t\t\t11A. Type of Birth(Single/Twin/Triplet/etc.): ");
                    TB = scn.next().toUpperCase();
                    setTB(TB);
-                   
-                   if(!TB.equalsIgnoreCase("Single")){
                        
                    System.out.print("\t\t\t\t12A. if multiple birth, child was (first/second/third/fourth/etc.): ");
                    TBP = scn.next().toUpperCase();
                    setTBP(TBP);
-                   
-                   }
                    
                    System.out.print("\t\t\t\t13A. Child Weight At Birth: ");
                    weigh = scn.next(); 
                    setweigh(weigh);
                    
                    //Mothers Info
-                  System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
+                   System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
                    System.out.println("\t\t\t\t\t\t\t\t\t\tMother information");
                    System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
                    
@@ -456,7 +441,6 @@ public class Birth extends Exception {
                    System.out.println("\t\t\t\t2A. Child Middle Name (Enter NA if does'nt have one): " + Mname);
                    System.out.println("\t\t\t\t3A. Child Last Name: " + Lname);
                    System.out.println("\t\t\t\t4A. Child Suffix (NA if not have): " + suff);
-                   //System.out.println("\t\t\t\t5A. Child Age: " + Age);
                    System.out.println("\t\t\t\t6A. Child Birthday(MM/DD/YYYY): " + BD);
                    System.out.println("\t\t\t\t7A. Child Sex(f/m): " + gen);
                    System.out.println("\t\t\t\t8A. Child Place of Bitht(Province): " + Provi);
