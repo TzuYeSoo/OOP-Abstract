@@ -1,0 +1,456 @@
+System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
+                   System.out.println("\t\t\t\t\t\t\t\t\t\tChild information");
+                   System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
+                   
+                   scn.nextLine();
+                   System.out.print("\t\t\t\t1A. Child First Name: ");
+                   Fname = scn.nextLine().toUpperCase();
+                   while(!Fname.matches("[A-Z ]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t1A. Child First Name: ");
+                   Fname = scn.nextLine().toUpperCase();
+                   }
+                   B.setFname(Fname);
+                   
+                   
+                   System.out.print("\t\t\t\t2A. Child Middle Name (Enter NA if does'nt have one): ");
+                   Mname = scn.next().toUpperCase();
+                   while(!Mname.matches("[A-Z ]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t2A. Child Middle Name (Enter NA if does'nt have one): ");
+                   Mname = scn.next().toUpperCase();
+                   }
+                   B.setMname(Mname);
+                   
+                   
+                   System.out.print("\t\t\t\t3A. Child Last Name: ");
+                   Lname = scn.next().toUpperCase();
+                   while(!Lname.matches("[A-Z ]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t3A. Child Last Name: ");
+                   Lname = scn.next().toUpperCase();
+                   }
+                   B.setLname(Lname);
+                   
+                   
+                   System.out.print("\t\t\t\t4A. Child Suffix (NA if not have): ");
+                   suff = scn.next().toUpperCase();
+                   while(!suff.matches("JR.|JR|NA")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t4A. Child Suffix (NA if not have): ");
+                   suff = scn.next().toUpperCase();
+                   }    
+                   B.setSuff(suff);
+                   
+                   
+                   System.out.print("\t\t\t\t5A. Child Birthday(MM/DD/YYYY): ");
+                   BD = scn.next();
+                   while(!BD.matches("\\d{2}/\\d{2}/\\d{4}")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t5A. Child Birthday(MM/DD/YYYY): ");
+                   BD = scn.next();
+                   }
+                   B.setBD(BD);
+                   
+                   
+                   System.out.print("\t\t\t\t6A. Child Sex(f/m): ");
+                   gen = scn.next().toUpperCase();
+                   while(!gen.matches("[F|M]{1}")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t6A. Child Sex(f/m): ");
+                   gen = scn.next().toUpperCase();
+                   }
+                   B.setgen(gen);
+                   
+                   
+                   System.out.print("\t\t\t\t7A. Child Place of Bitht(Province): ");
+                   Provi = scn.next().toUpperCase();
+                   while(!Provi.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t7A. Child Place of Bitht(Province): ");
+                   Provi = scn.next().toUpperCase();
+                   }    
+                   B.setprovi(Provi);
+                   
+                   
+                   System.out.print("\t\t\t\t8A. Child Place of Birth (City/Municipality): " );
+                   City = scn.next().toUpperCase();
+                   while(!City.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t8A. Child Place of Birth (City/Municipality): " );
+                   City = scn.next().toUpperCase();
+                   }
+                   B.setCity(City);
+                   
+                   System.out.print("\t\t\t\t9A. Child Place of Birth(Hospital/Clinic/Institution): ");
+                   scn.nextLine();
+                   Hos = scn.nextLine().toUpperCase();
+                   while(!Hos.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t9A. Child Place of Birth(Hospital/Clinic/Institution): ");
+                   Hos = scn.nextLine().toUpperCase();
+                   }    
+                   B.setHos(Hos);
+                   
+                   System.out.print("\t\t\t\t10A. Type of Birth(Single/Twin/Triplet/etc.): ");
+                   TB = scn.next().toUpperCase();
+                   while(!TB.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t10A. Type of Birth(Single/Twin/Triplet/etc.): ");
+                   TB = scn.next().toUpperCase();
+                   }
+                   B.setTB(TB);
+                       
+                   System.out.print("\t\t\t\t11A. if multiple birth, child was (first/second/third/fourth/etc.): ");
+                   TBP = scn.next().toUpperCase();
+                   while(!TBP.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t11A. if multiple birth, child was (first/second/third/fourth/etc.): ");
+                   TBP = scn.next().toUpperCase();
+                   }
+                   B.setTBP(TBP);
+                   
+                   System.out.print("\t\t\t\t12A. Child Weight At Birth: ");
+                   weigh = scn.next(); 
+                   while(!weigh.matches("[0-9]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t12A. Child Weight At Birth: ");
+                   weigh = scn.next();
+                   }
+                   B.setweigh(weigh);
+                   
+                   //Mothers Info
+                  System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
+                   System.out.println("\t\t\t\t\t\t\t\t\t\tMother information");
+                   System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
+                   
+                   System.out.print("\t\t\t\t1M. Mother First Name: ");
+                   scn.nextLine();
+                   MFname = scn.nextLine().toUpperCase();
+                   while(!MFname.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t1M. Mother First Name: ");
+                   MFname = scn.nextLine().toUpperCase();
+                   }
+                   B.setMFname(MFname);
+                                     
+                   System.out.print("\t\t\t\t2M. Mother Middle Name: ");
+                   MMname = scn.nextLine().toUpperCase(); 
+                   while(!MMname.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t2M. Mother Middle Name: ");
+                   MMname = scn.nextLine().toUpperCase(); 
+                   }
+                   B.setMMname(MMname);
+                   
+                   System.out.print("\t\t\t\t3M. Mother Last Name: ");
+                   MLname = scn.nextLine().toUpperCase();
+                   while(!MLname.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t3M. Mother Last Name: ");
+                   MLname = scn.nextLine().toUpperCase();
+                   }
+                   B.setMLname(MLname);
+                   
+                   System.out.print("\t\t\t\t4M. Mother Citizenship: ");
+                   MCiten = scn.next().toUpperCase();
+                   while(!MCiten.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t4M. Mother Citizenship: ");
+                   MCiten = scn.next().toUpperCase();
+                   }
+                   B.setMCite(MCiten);
+                   
+                   System.out.print("\t\t\t\t5M. Mother Religion: ");
+                   scn.nextLine();
+                   MReligion = scn.nextLine().toUpperCase();
+                   while(!MReligion.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t5M. Mother Religion: ");
+                   MReligion = scn.nextLine().toUpperCase();
+                   }
+                   B.setMReligion(MReligion);
+                   
+                   System.out.print("\t\t\t\t6M. Mother Occupation: ");
+                   Mocc = scn.nextLine().toUpperCase(); 
+                   while(!Mocc.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t6M. Mother Occupation: ");
+                   Mocc = scn.nextLine().toUpperCase(); 
+                   }
+                   B.setMoc(Mocc);
+                   
+                   System.out.print("\t\t\t\t7M. Mother Age at time of this birth: ");
+                   Mage = scn.next();
+                   while(!Mage.matches("[0-1]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t7M. Mother Age at time of this birth: ");
+                   Mage = scn.next();
+                   }
+                   B.setMage(Mage);
+                   
+                   System.out.print("\t\t\t\t8M. Residence(House Number/Steet, Barangay): ");
+                   scn.nextLine();
+                   MHos = scn.nextLine().toUpperCase();
+                   while(!MHos.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t8M. Residence(House Number/Steet, Barangay): ");
+                   MHos = scn.nextLine().toUpperCase();
+                   }
+                   B.setMHos(MHos);
+                   
+                   System.out.print("\t\t\t\t9M. Residence Munipality: ");
+                   MCity = scn.nextLine().toUpperCase();
+                   while(!MCity.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t9M. Residence Munipality: ");
+                   MCity = scn.nextLine().toUpperCase();
+                   }
+                   B.setMCity(MCity);
+                   
+                   System.out.print("\t\t\t\t10M. Province: ");
+                   Mprovi = scn.nextLine().toUpperCase();
+                   while(!Mprovi.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t10M. Province: ");
+                   Mprovi = scn.nextLine().toUpperCase();
+                   }
+                   B.setMprovi(Mprovi);
+                  
+                  // Father Info
+                  
+                   System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
+                   System.out.println("\t\t\t\t\t\t\t\t\t\tFather Information");
+                   System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
+                   
+                   System.out.print("\t\t\t\t1F. Father First Name: ");
+                   scn.nextLine();
+                   FFname = scn.nextLine().toUpperCase();
+                   while(!FFname.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t1F. Father First Name: ");
+                   FFname = scn.nextLine().toUpperCase();
+                   }
+                   B.setFFname(FFname);
+                                     
+                   System.out.print("\t\t\t\t2F. Father Middle Name: ");
+                   FMname = scn.nextLine().toUpperCase(); 
+                   while(!FMname.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t2F. Father Middle Name: ");
+                   FMname = scn.nextLine().toUpperCase(); 
+                   }
+                   B.setFMname(FMname);
+                   
+                   System.out.print("\t\t\t\t3F. Father Last Name: ");
+                   FLname = scn.nextLine().toUpperCase();
+                   while(!FLname.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t3F. Father Last Name: ");
+                   FLname = scn.nextLine().toUpperCase();
+                   }
+                   B.setFLname(FLname);
+                   
+                   System.out.print("\t\t\t\t4F. Father Citizenship: ");
+                   FCiten = scn.next().toUpperCase();
+                   while(!FCiten.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t4F. Father Citizenship: ");
+                   FCiten = scn.next().toUpperCase();
+                   }
+                   B.setFCite(FCiten);
+                   
+                   System.out.print("\t\t\t\t5F. Father Religion: ");
+                   scn.nextLine();
+                   FReligion = scn.nextLine().toUpperCase();
+                   while(!FReligion.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t5F. Father Religion: ");
+                   FReligion = scn.nextLine().toUpperCase();
+                   }
+                   B.setFReligion(FReligion);
+                   
+                   System.out.print("\t\t\t\t6F. Father Occupation: ");
+                   Focc = scn.nextLine().toUpperCase(); 
+                   while(!Focc.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t6F. Father Occupation: ");
+                   Focc = scn.nextLine().toUpperCase(); 
+                   }
+                   B.setFocc(Focc);
+                   
+                   System.out.print("\t\t\t\t7F. Father Age at time of this birth: ");
+                   Fage = scn.next();
+                   while(!Fage.matches("[0-1]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t7F. Father Age at time of this birth: ");
+                   Fage = scn.next();
+                   }
+                   B.setFage(Fage);
+                   
+                   System.out.print("\t\t\t\t8F. Residence(House Number/Steet, Barangay): ");
+                   scn.nextLine();
+                   FHos = scn.nextLine().toUpperCase();
+                   while(!FHos.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t8F. Residence(House Number/Steet, Barangay): ");
+                   FHos = scn.nextLine().toUpperCase();
+                   }
+                   B.setFHos(FHos);
+                   
+                   System.out.print("\t\t\t\t9F. Residence Munipality: ");
+                   FCity = scn.nextLine().toUpperCase();
+                   while(!FCity.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t9F. Residence Munipality: ");
+                   FCity = scn.nextLine().toUpperCase();
+                   }
+                   B.setFCity(FCity);
+                   
+                   System.out.print("\t\t\t\t10F. Province: ");
+                   Fprovi = scn.nextLine().toUpperCase();
+                   while(!Fprovi.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t10F. Province: ");
+                   Fprovi = scn.nextLine().toUpperCase();
+                   }
+                   B.setFprovi(Fprovi);
+        
+        //Birth_EDIT
+        do {
+        BDisplay();
+		System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
+        System.out.print("\t\t\t\t\t\t\t\t\tCheck your answers(if theres any mistake press 2 to edit)"
+                 + "\n\t\t\t\t\t\t\t\t\t[C] Continue"
+                 + "\n\t\t\t\t\t\t\t\t\t[E] Edit "
+                 + "\n\t\t\t\t\t\t\t\t\tYour Input: ");
+        CoE = scn.next().toUpperCase();
+         
+        
+        if(CoE.equals("C")){
+            
+
+        	
+        }else if(CoE.equals("E")){
+        	
+            
+             System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
+             System.out.print("\t\t\t\t\tEnter the Code Value of that question example(1A)"
+                     + "\n\t\t\t\t\tif more than 1 each number and value should be seprate by space: ");
+             scn.nextLine();
+             String edit = scn.nextLine().toUpperCase();
+             System.out.println(edit);
+             String[] Birth_editor = edit.split(" ");
+             
+             for(String a: Birth_editor) {
+		               System.out.println(a);
+		System.out.print("\t\t\t\t\t" + a + " " + Birth_Ques.get(a));
+                String change = scn.nextLine();
+       
+                    switch(a){
+                            case "1A":
+                                B.setFname(change);
+                                 break;
+                            case "2A":
+                                B.setMname(change);
+                                break;
+                            case "3A":
+                                B.setLname(change);
+                                break;
+                            case "4A":
+                                B.setSuff(change);;
+                                break;
+                            case "5A":
+                                B.setBD(change);
+                                break;
+                            case "6A":
+                                B.setgen(change);
+                                break;
+                            case "7A":
+                                B.setprovi(change);
+                                break;
+                            case "8A":
+                                B.setCity(change);
+                                break;
+                            case "9A":
+                                B.setHos(change);
+                                break;
+                            case "10A":
+                                B.setTB(change);
+                                break;
+                            case "11A":
+                                B.setTBP(change);
+                                break;
+                            case "12":
+                                B.setweigh(change);
+                                break;
+                            case "1M":
+                                B.setMFname(change);
+                                break;
+                            case "2M":
+                                B.setMMname(change);
+                                break;
+                            case "3M":
+                                B.setMLname(change);
+                                break;
+                            case "4M":
+                                B.setMCite(change);
+                                break;
+                            case "5M":
+                                B.setMReligion(change);
+                                break;
+                            case "6M":
+                                B.setMoc(change);
+                                break;
+                            case "7M":
+                                B.setMage(change);
+                                break;
+                            case "8M":
+                                B.setMHos(change);
+                                break;
+                            case "9M":
+                                B.setMCity(change);
+                                break;
+                            case "10M":
+                                B.setMprovi(change);
+                                break;
+                            case "1F":
+                                B.setFFname(change);
+                                break;
+                            case "2F":
+                                B.setFMname(change);
+                                break;
+                            case "3F":
+                                B.setFLname(change);
+                                break;
+                            case "4F":
+                                B.setFCite(change);
+                                break;
+                            case "5F":
+                                B.setFReligion(change);
+                                break;
+                            case "6F":
+                                B.setFocc(change);
+                                break;
+                            case "7F":
+                                B.setFage(change);
+                               break;
+                            case "8F":
+                                B.setFHos(change);
+                                break;
+                            case "9F":
+                                B.setFCity(change);
+                                break;
+                            case "10F":
+                                B.setFprovi(change);
+                                break;
+    					}
+    			  }
+             }else{
+            
+            InvalidErrors();
+            
+            }
+                }while(!CoE.equalsIgnoreCase("C"));
+		
+	}
