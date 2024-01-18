@@ -7,10 +7,33 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Map;
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 
 public class GOVERNMENTAGENCY {
 	
-    
+//Cenomar
+        static private String WName, WDate, WPlace, WMother, WFather;
+        static private String FName, FDate, FPlace, FFather, FMother;
+        static int CNavi = 1;
+        static int CCode_Num = 990001;
+        static LinkedHashMap <Object, String> Cenomar_Code = new LinkedHashMap();
+        static LinkedHashMap <Object, String> Cenomar_CCode = new LinkedHashMap();
+        static LinkedHashMap <Object, String> Cenomar_Request = new LinkedHashMap();
+        static LinkedHashMap <Object, String> Admin_CStore = new LinkedHashMap();
+        static LinkedHashMap <Object, String> Cenomar_Delete = new LinkedHashMap();
+        
+        static String CenoNavi;
+//marraige
+        static Marriage_Setter Marriage = new Marriage_Setter();
+        private static Map queue = new HashMap();
+        private static Map ques = new HashMap();
+        static int MNavi = 1;
+        
+        static HashMap <String, String> Marriage_Storage = new HashMap <String, String>();
+        static HashMap <String, String> Cenomar_Storage = new HashMap <String, String>();
+        
+        String SMName;
+        Queue<String> MS = new LinkedList();
         //Accounts
         //Semi
         static String SALogin = "Jessie@gmail.com";
@@ -79,7 +102,7 @@ public class GOVERNMENTAGENCY {
 	    
 //Child HashMaps Storages
 	    public static LinkedHashMap <String, String>BStore  = new LinkedHashMap();
-	    public static Queue <String> BS = new LinkedList();
+	    //public static Queue <String> BS = new LinkedList();
 	    private static String Name;
 	    private static int Navi = 1;
 	    private static LinkedHashMap <String, String> Admin_BStore = new LinkedHashMap();
@@ -91,8 +114,8 @@ public class GOVERNMENTAGENCY {
 	    
 	    
 //Loops Boolean	    
-	    static boolean MainLoop = true, RF = true, BDML = true, YN = true;
-            static String PE, PD, PYN, CE,BFill, RYN, YorN, NoC, AlCode, Edit_Name;
+	    static boolean MainLoop = true, RF = true, BDML = true;
+            static String PE, PD, BDM, CE,BFill, RYN, YorN, NoC, AlCode, Edit_Name, YoN, AdminPurp, CFill, Purp, Purpose, NA, NX;
 	    
 	    
 	static Scanner scn = new Scanner(System.in);
@@ -102,23 +125,32 @@ public class GOVERNMENTAGENCY {
             
 		
 			Birth_Question();
+                        Cenomar_Question();
+                        Marriage_Question();
 			
 			do {
-		         System.out.println("\n\t\t\t=============================================================================================================================");
-
-		        System.out.print("\t\t\t\t\t\t\t  ________  ____  ____  _______   __    _____  ___  \n" +
-		"\t\t\t\t\t\t\t /\"       )(\"  _||_ \" ||   _  \"\\ |\" \\  (\\\"   \\|\"  \\  \n" +
-		"\t\t\t\t\t\t\t(:   \\___/ |   (  ) : |(. |_)  :)||  | |.\\\\   \\    | \n" +
-		"\t\t\t\t\t\t\t \\___  \\   (:  |  | . )|:     \\/ |:  | |: \\.   \\\\  | \n" +
-		"\t\t\t\t\t\t\t  __/  \\\\   \\\\ \\__/ // (|  _  \\\\ |.  | |.  \\    \\. | \n" +
-		"\t\t\t\t\t\t\t /\" \\   :)  /\\\\ __ //\\ |: |_)  :)/\\  |\\|    \\    \\ | \n" +
-		"\t\t\t\t\t\t\t(_______/  (__________)(_______/(__\\_|_)\\___|\\____\\) \n" +
-		"\t\t\t\t\t\t\t                                                     \n" +
-		"\t\t\t\t\t\t\t "
-		                + "\t[A] Main Admin"
-		                + "\t[S] Semi Admin "
-		                + "\t[G] Guest: ");
-		        String Purpose = scn.next().toUpperCase();
+       System.out.println("\n\t\t\t=============================================================================================================================");
+       System.out.print("\t\t\t\t\t\t\t           ________  ____  ____  _______   __    _____  ___      \n" +
+                        "\t\t\t\t\t\t\t          /\"       )(\"  _||_ \" ||   _  \"\\ |\" \\  (\\\"   \\|\"  \\     \n" +
+                        "\t\t\t\t\t\t\t         (:   \\___/ |   (  ) : |(. |_)  :)||  | |.\\\\   \\    |    \n" +
+                        "\t\t\t\t\t\t\t          \\___  \\   (:  |  | . )|:     \\/ |:  | |: \\.   \\\\  |    \n" +
+                        "\t\t\t\t\t\t\t          __/  \\\\   \\\\ \\__/ // (|  _  \\\\ |.  | |.  \\    \\. |    \n" +
+                        "\t\t\t\t\t\t\t          /\" \\   :)  /\\\\ __ //\\ |: |_)  :)/\\  |\\|    \\    \\ |    \n" +
+                        "\t\t\t\t\t\t\t         (_______/  (__________)(_______/(__\\_|_)\\___|\\____\\)    \n" +
+                        "\t\t\t\t\t\t\t                                                                    \n" +
+                        "\t\t\t\t\t\t\t      __       _______    _______  _____  ___    ______   ___  ___  \n" +
+                        "\t\t\t\t\t\t\t     /\"\"\\     /\" _   \"|  /\"     \"|(\\\"   \\|\"  \\  /\" _  \"\\ |\"  \\/\"  | \n" +
+                        "\t\t\t\t\t\t\t    /    \\   (: ( \\___) (: ______)|.\\\\   \\    |(: ( \\___) \\   \\  /  \n" +
+                        "\t\t\t\t\t\t\t   /' /\\  \\   \\/ \\       \\/    |  |: \\.   \\\\  | \\/ \\       \\\\  \\/   \n" +
+                        "\t\t\t\t\t\t\t  //  __'  \\  //  \\ ___  // ___)_ |.  \\    \\. | //  \\ _    /   /    \n" +
+                        "\t\t\t\t\t\t\t /   /  \\\\  \\(:   _(  _|(:      \"||    \\    \\ |(:   _) \\  /   /     \n" +
+                        "\t\t\t\t\t\t\t(___/    \\___)\\_______)  \\_______) \\___|\\____\\) \\_______)|___/      \n" +
+                        "\t\t\t\t\t\t\t"
+		                + "\n\t\t\t\t\t\t\t  [A] Main Admin"
+		                + "\t  [S] Semi Admin "
+		                + "\t  [G] Guest\n"
+                                + "\n\t\t\t\t\t\t\t\t\t\t    Your Input: ");
+		        Purpose = scn.next().toUpperCase();
 		        
 		        switch(Purpose) {
 		        case "A":
@@ -126,7 +158,6 @@ public class GOVERNMENTAGENCY {
 		        	break;
 		        case "S":
                                 Semi_Admin_Login();
-		       
 		        	break;
 		        case "G":
 		        	do {
@@ -135,18 +166,18 @@ public class GOVERNMENTAGENCY {
 		                       + "\n\t\t\t\t\t\t\t\t\t\tGovernment Agency"
 		                       + "\n\t\t\t\t\t\t\t\t\t\t[F] Fill Up Form"
 		                       + "\n\t\t\t\t\t\t\t\t\t\t[R] Request Copy"
-		                       + "\n\t\t\t\t\t\t\t\t\t\t: ");
+		                       + "\n\t\t\t\t\t\t\t\t\t\tYour Input: ");
 		               
-		               String Purp = scn.next().toUpperCase();
+		               Purp = scn.next().toUpperCase();
 		               System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
 		               			
 		               switch(Purp) {
 		               
 		               case "F":
-		            	   while(BDML == true) {
+		            	   do{
 		            		   
 		            	   BDMQuestions();
-		            	   String BDM = scn.next().toUpperCase();
+		            	   BDM = scn.next().toUpperCase();
 		            	   
                                    switch(BDM) {
 		            	   
@@ -165,117 +196,102 @@ public class GOVERNMENTAGENCY {
                                             System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
 
                                             BCode_Num++;
-		            		   BDML = false;
+		            		    BDML = false;
 		            		   break;
+                                           
+                                   case "C":
+                                        Cenomar_FillUp();
+                                        Marriage.setCenoName(Marriage.getWApplicationName());
+                                        Cenomar_Storage();
+                                        
+                                        Cenomar_Code.put("C" + CCode_Num, Marriage.getCenoName());
+                                        Cenomar_CCode.put("C" + CCode_Num, "Request");
+                                        
+                                        System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
+                                        System.out.println("\t\t\t\t\t\tThank You for Registering!");
+                                        System.out.println("\t\t\t\t\t\tWarning do not show this code to anyone!!!!");
+                                        System.out.println("\t\t\t\tHeres your Code Number if you ever wanted the Copy of the certificate: B" + CCode_Num);
+                                        System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
+                                        CCode_Num++;
+                                        break;
 		            	   case "M":
 		            		   
-		            		   BDML = false;
 		            		   break;   
-		            	   case "D":
-		            		   
-		            		   BDML = false;
-		            		   break;
+                                   default:
+                                       InvalidErrors();
 		            	   		}
-		            	   }
-                                   BDML = true;
-		            	   
-		               
-		            	   RF = false;
+		            	   }while(!BDM.matches("M|B|C"));
+                                   
 		            	   break;
 		               case "R":
-		            	   
+		            	   do{
                                    System.out.print("\t\t\t\t\t\tRequest Copy Options"
                                            + "\n\t\t\t\t\t\t[N] New Request"
                                            + "\n\t\t\t\t\t\t[A] Already Request: ");
-                                   String NA = scn.next().toUpperCase();
+                                    NA = scn.next().toUpperCase();
                                    
                                    switch(NA){
                                        
                                        case "N":
                                            
-                                   System.out.print("\t\t\t\t\tEnter the Code Number That have been given to you after your Fill Up Form: ");
-                                   BFill = scn.next().toUpperCase();
-                                   
-                                   if(Birth_Code.containsKey(BFill)){
-                                       
-                                       if(Birth_ACode.get(BFill) == "Done"){
-                                           System.out.print("This Certificate have been Already approve and certificate is ready"
-                                                   + "\n\t\t\t\t\tif you want another copy press N, if no press X"
-                                                   + "\n\t\t\t\t\t[N] New Coppy"
-                                                   + "\n\t\t\t\t\t[X] Exit: ");
-                                           String NCopy = scn.next().toUpperCase(); 
-                                            
-                                           if(NCopy.equals("N")){
-                                               BirthSemiAdminQues();
-                                           }else if(NCopy.equals("X")){
+                                           do{
+                                               BDMQuestions();
+                                               BDM = scn.next().toUpperCase();
                                                
-                                              MainLoop = true;
-                                           }else {
-                                               InvalidErrors();
-                                           }
+                                               switch(BDM){
+                                                   case "B":
+                                                       Birth_NewReq();
+                                                       break;
+                                                   case "M":
+                                                       
+                                                       break;
+                                                       
+                                                   case "C":
+                                                       Cenomar_NewReq();
+                                                       break;
+                                               }
+                                               
+                                           }while(BDM.matches("B|D|C"));
                                            
-                                       }else if(Birth_ACode.get(BFill) == "Denied"){
-                                           System.out.println("\t\t\t\t\tThis Request Have been denied already!!!");
-                                           System.out.println("\t\t\t\t\tPlease be more carefull and check your answers before Inputing them");
-                                           BirthSemiAdminQues();
-                                           break;
-                                           
-                                       }else if(Birth_ACode.get(BFill) == "Request"){
-                                           System.out.println("\t\t\t\t\tThis Data is still waiting to be Approve."
-                                                   + "\n\t\t\t\t\tPlease wait for the Approval of the Admin");
-                                           break;
-                                       }else if(Birth_ACode.get(BFill) == "Approve"){
-                                           System.out.println("\t\t\t\t\tThis Data is already Approve"
-                                                   + "\n\t\t\t\t\tPlease go to Already Request section to pay for the certificate");
-                                       }
-
-                                        }
+                                   
                                    break;
                                        case "A":
                                            
-                                           System.out.print("\t\t\t\t\tEnter the Code Number That have been given to you after your Fill Up Form: ");
-                                            AlCode = scn.next().toUpperCase();
-                                           
-                                           if(Birth_ACode.containsKey(AlCode)){
-                                               if(Birth_ACode.get(AlCode) == "Approve"){
-                                                   BirthNavi = AlCode.substring(AlCode.length() - 1);
-                                                   B.setBirthStoreKey(Birth_Code.get(AlCode));                                               
-                                                   do{
-                                                   System.out.println("The Code Have been Approve!!");
-                                                   System.out.println("Choose the Method you want"
-                                                           + "\n[P] Pick Up"
-                                                           + "\n[D] Delivery");
-                                                   PD = scn.next().toUpperCase();
-                                                   
-                                                   if(PD.equals("P")){
-                                                       BirthPickUp();
-                                                   }else if(PD.equals("D")){
-                                                       BirthDelivery();
-                                                   }else{
+                                            do{
+                                               BDMQuestions();
+                                               BDM = scn.next().toUpperCase();
+                                               
+                                               switch(BDM){
+                                                   case "B":
+                                                       Birth_AlreadyReq();
+                                                       break;
+                                                   case "M":
+                                                       
+                                                       break;
+                                                       
+                                                   case "C":
+                                                       Cenomar_AlreadyReq();
+                                                       break;
+                                                   default:
                                                        InvalidErrors();
-                                                   }
-                                                   }while(!PD.matches("P|D"));
-                                               }else if(Birth_ACode.get(AlCode) == "Request"){
-                                                   System.out.println("\t\t\t\t\tPlease wait for the Approval of the Request!!");
-                                               }else if(Birth_ACode.get(AlCode) == "Denied"){
-                                                   System.out.println("\t\t\t\t\tYour Request Had been denied!!"
-                                                           + "\n\t\t\t\t\tYour Answer Doesn't Match the data your trying to access");
                                                }
-                                           }else{
-                                               InvalidErrors();
-                                           }
+                                               
+                                           }while(BDM.matches("B|D|C"));
                                        
                                        break;
+                                       default:
+                                           
+                                           InvalidErrors();
                                    }
-		            	   RF = false;
+                               }while(!NA.matches("N|A"));
 		            	   break;
 		               default:
 		            	   
 		            	   InvalidErrors();
 		            	   
 		               }
-		        	}while(RF == true);
-		               NewTrans();
+		        	}while(!Purp.matches("R|F"));
+		               
 		        	
 		        	break;
 		        	
@@ -283,65 +299,133 @@ public class GOVERNMENTAGENCY {
 		    	   InvalidErrors();
 		    	   
 		        }
-			}while(MainLoop == true);
+                        NewTrans();
+			}while(NX.equals("N"));
 		
 	}
 	
 	
 	public static void Birth() {
             
-		   System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
+		  System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
                    System.out.println("\t\t\t\t\t\t\t\t\t\tChild information");
                    System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
-
-                   System.out.print("\t\t\t\t1A. Child First Name: ");
+                   
                    scn.nextLine();
+                   System.out.print("\t\t\t\t1A. Child First Name: ");
                    Fname = scn.nextLine().toUpperCase();
+                   while(!Fname.matches("[A-Z ]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t1A. Child First Name: ");
+                   Fname = scn.nextLine().toUpperCase();
+                   }
                    B.setFname(Fname);
+                   
                    
                    System.out.print("\t\t\t\t2A. Child Middle Name (Enter NA if does'nt have one): ");
                    Mname = scn.next().toUpperCase();
+                   while(!Mname.matches("[A-Z ]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t2A. Child Middle Name (Enter NA if does'nt have one): ");
+                   Mname = scn.next().toUpperCase();
+                   }
                    B.setMname(Mname);
+                   
                    
                    System.out.print("\t\t\t\t3A. Child Last Name: ");
                    Lname = scn.next().toUpperCase();
+                   while(!Lname.matches("[A-Z ]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t3A. Child Last Name: ");
+                   Lname = scn.next().toUpperCase();
+                   }
                    B.setLname(Lname);
+                   
                    
                    System.out.print("\t\t\t\t4A. Child Suffix (NA if not have): ");
                    suff = scn.next().toUpperCase();
+                   while(!suff.matches("JR.|JR|NA")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t4A. Child Suffix (NA if not have): ");
+                   suff = scn.next().toUpperCase();
+                   }    
                    B.setSuff(suff);
+                   
                    
                    System.out.print("\t\t\t\t5A. Child Birthday(MM/DD/YYYY): ");
                    BD = scn.next();
+                   while(!BD.matches("\\d{2}/\\d{2}/\\d{4}")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t5A. Child Birthday(MM/DD/YYYY): ");
+                   BD = scn.next();
+                   }
                    B.setBD(BD);
+                   
                    
                    System.out.print("\t\t\t\t6A. Child Sex(f/m): ");
                    gen = scn.next().toUpperCase();
+                   while(!gen.matches("[F|M]{1}")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t6A. Child Sex(f/m): ");
+                   gen = scn.next().toUpperCase();
+                   }
                    B.setgen(gen);
+                   
                    
                    System.out.print("\t\t\t\t7A. Child Place of Bitht(Province): ");
                    Provi = scn.next().toUpperCase();
+                   while(!Provi.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t7A. Child Place of Bitht(Province): ");
+                   Provi = scn.next().toUpperCase();
+                   }    
                    B.setprovi(Provi);
+                   
                    
                    System.out.print("\t\t\t\t8A. Child Place of Birth (City/Municipality): " );
                    City = scn.next().toUpperCase();
+                   while(!City.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t8A. Child Place of Birth (City/Municipality): " );
+                   City = scn.next().toUpperCase();
+                   }
                    B.setCity(City);
                    
                    System.out.print("\t\t\t\t9A. Child Place of Birth(Hospital/Clinic/Institution): ");
                    scn.nextLine();
                    Hos = scn.nextLine().toUpperCase();
+                   while(!Hos.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t9A. Child Place of Birth(Hospital/Clinic/Institution): ");
+                   Hos = scn.nextLine().toUpperCase();
+                   }    
                    B.setHos(Hos);
                    
                    System.out.print("\t\t\t\t10A. Type of Birth(Single/Twin/Triplet/etc.): ");
                    TB = scn.next().toUpperCase();
+                   while(!TB.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t10A. Type of Birth(Single/Twin/Triplet/etc.): ");
+                   TB = scn.next().toUpperCase();
+                   }
                    B.setTB(TB);
                        
                    System.out.print("\t\t\t\t11A. if multiple birth, child was (first/second/third/fourth/etc.): ");
                    TBP = scn.next().toUpperCase();
+                   while(!TBP.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t11A. if multiple birth, child was (first/second/third/fourth/etc.): ");
+                   TBP = scn.next().toUpperCase();
+                   }
                    B.setTBP(TBP);
                    
                    System.out.print("\t\t\t\t12A. Child Weight At Birth: ");
                    weigh = scn.next(); 
+                   while(!weigh.matches("[0-9]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t12A. Child Weight At Birth: ");
+                   weigh = scn.next();
+                   }
                    B.setweigh(weigh);
                    
                    //Mothers Info
@@ -352,46 +436,94 @@ public class GOVERNMENTAGENCY {
                    System.out.print("\t\t\t\t1M. Mother First Name: ");
                    scn.nextLine();
                    MFname = scn.nextLine().toUpperCase();
+                   while(!MFname.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t1M. Mother First Name: ");
+                   MFname = scn.nextLine().toUpperCase();
+                   }
                    B.setMFname(MFname);
-                   
                                      
                    System.out.print("\t\t\t\t2M. Mother Middle Name: ");
                    MMname = scn.nextLine().toUpperCase(); 
+                   while(!MMname.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t2M. Mother Middle Name: ");
+                   MMname = scn.nextLine().toUpperCase(); 
+                   }
                    B.setMMname(MMname);
                    
                    System.out.print("\t\t\t\t3M. Mother Last Name: ");
                    MLname = scn.nextLine().toUpperCase();
+                   while(!MLname.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t3M. Mother Last Name: ");
+                   MLname = scn.nextLine().toUpperCase();
+                   }
                    B.setMLname(MLname);
                    
                    System.out.print("\t\t\t\t4M. Mother Citizenship: ");
                    MCiten = scn.next().toUpperCase();
+                   while(!MCiten.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t4M. Mother Citizenship: ");
+                   MCiten = scn.next().toUpperCase();
+                   }
                    B.setMCite(MCiten);
                    
                    System.out.print("\t\t\t\t5M. Mother Religion: ");
                    scn.nextLine();
                    MReligion = scn.nextLine().toUpperCase();
+                   while(!MReligion.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t5M. Mother Religion: ");
+                   MReligion = scn.nextLine().toUpperCase();
+                   }
                    B.setMReligion(MReligion);
                    
                    System.out.print("\t\t\t\t6M. Mother Occupation: ");
                    Mocc = scn.nextLine().toUpperCase(); 
+                   while(!Mocc.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t6M. Mother Occupation: ");
+                   Mocc = scn.nextLine().toUpperCase(); 
+                   }
                    B.setMoc(Mocc);
-                   
                    
                    System.out.print("\t\t\t\t7M. Mother Age at time of this birth: ");
                    Mage = scn.next();
+                   while(!Mage.matches("[0-1]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t7M. Mother Age at time of this birth: ");
+                   Mage = scn.next();
+                   }
                    B.setMage(Mage);
                    
                    System.out.print("\t\t\t\t8M. Residence(House Number/Steet, Barangay): ");
                    scn.nextLine();
                    MHos = scn.nextLine().toUpperCase();
+                   while(!MHos.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t8M. Residence(House Number/Steet, Barangay): ");
+                   MHos = scn.nextLine().toUpperCase();
+                   }
                    B.setMHos(MHos);
                    
                    System.out.print("\t\t\t\t9M. Residence Munipality: ");
                    MCity = scn.nextLine().toUpperCase();
+                   while(!MCity.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t9M. Residence Munipality: ");
+                   MCity = scn.nextLine().toUpperCase();
+                   }
                    B.setMCity(MCity);
                    
                    System.out.print("\t\t\t\t10M. Province: ");
                    Mprovi = scn.nextLine().toUpperCase();
+                   while(!Mprovi.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t10M. Province: ");
+                   Mprovi = scn.nextLine().toUpperCase();
+                   }
                    B.setMprovi(Mprovi);
                   
                   // Father Info
@@ -401,45 +533,96 @@ public class GOVERNMENTAGENCY {
                    System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
                    
                    System.out.print("\t\t\t\t1F. Father First Name: ");
+                   scn.nextLine();
                    FFname = scn.nextLine().toUpperCase();
+                   while(!FFname.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t1F. Father First Name: ");
+                   FFname = scn.nextLine().toUpperCase();
+                   }
                    B.setFFname(FFname);
-                   
+                                     
                    System.out.print("\t\t\t\t2F. Father Middle Name: ");
-                   FMname = scn.nextLine(); 
+                   FMname = scn.nextLine().toUpperCase(); 
+                   while(!FMname.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t2F. Father Middle Name: ");
+                   FMname = scn.nextLine().toUpperCase(); 
+                   }
                    B.setFMname(FMname);
                    
                    System.out.print("\t\t\t\t3F. Father Last Name: ");
                    FLname = scn.nextLine().toUpperCase();
+                   while(!FLname.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t3F. Father Last Name: ");
+                   FLname = scn.nextLine().toUpperCase();
+                   }
                    B.setFLname(FLname);
-
+                   
                    System.out.print("\t\t\t\t4F. Father Citizenship: ");
                    FCiten = scn.next().toUpperCase();
+                   while(!FCiten.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t4F. Father Citizenship: ");
+                   FCiten = scn.next().toUpperCase();
+                   }
                    B.setFCite(FCiten);
                    
                    System.out.print("\t\t\t\t5F. Father Religion: ");
                    scn.nextLine();
                    FReligion = scn.nextLine().toUpperCase();
+                   while(!FReligion.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t5F. Father Religion: ");
+                   FReligion = scn.nextLine().toUpperCase();
+                   }
                    B.setFReligion(FReligion);
                    
                    System.out.print("\t\t\t\t6F. Father Occupation: ");
-                   Focc = scn.nextLine().toUpperCase();
+                   Focc = scn.nextLine().toUpperCase(); 
+                   while(!Focc.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t6F. Father Occupation: ");
+                   Focc = scn.nextLine().toUpperCase(); 
+                   }
                    B.setFocc(Focc);
-                                      
+                   
                    System.out.print("\t\t\t\t7F. Father Age at time of this birth: ");
                    Fage = scn.next();
+                   while(!Fage.matches("[0-1]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t7F. Father Age at time of this birth: ");
+                   Fage = scn.next();
+                   }
                    B.setFage(Fage);
                    
                    System.out.print("\t\t\t\t8F. Residence(House Number/Steet, Barangay): ");
                    scn.nextLine();
                    FHos = scn.nextLine().toUpperCase();
+                   while(!FHos.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t8F. Residence(House Number/Steet, Barangay): ");
+                   FHos = scn.nextLine().toUpperCase();
+                   }
                    B.setFHos(FHos);
                    
                    System.out.print("\t\t\t\t9F. Residence Munipality: ");
                    FCity = scn.nextLine().toUpperCase();
+                   while(!FCity.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t9F. Residence Munipality: ");
+                   FCity = scn.nextLine().toUpperCase();
+                   }
                    B.setFCity(FCity);
                    
                    System.out.print("\t\t\t\t10F. Province: ");
                    Fprovi = scn.nextLine().toUpperCase();
+                   while(!Fprovi.matches("[A-Z]*")){
+                   System.out.println("\t\t\t\tInvalid Input!");
+                   System.out.print("\t\t\t\t10F. Province: ");
+                   Fprovi = scn.nextLine().toUpperCase();
+                   }
                    B.setFprovi(Fprovi);
         
         //Birth_EDIT
@@ -448,7 +631,8 @@ public class GOVERNMENTAGENCY {
 		System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
         System.out.print("\t\t\t\t\t\t\t\t\tCheck your answers(if theres any mistake press 2 to edit)"
                  + "\n\t\t\t\t\t\t\t\t\t[C] Continue"
-                 + "\n\t\t\t\t\t\t\t\t\t[E] Edit: ");
+                 + "\n\t\t\t\t\t\t\t\t\t[E] Edit "
+                 + "\n\t\t\t\t\t\t\t\t\tYour Input: ");
         CoE = scn.next().toUpperCase();
          
         
@@ -462,6 +646,7 @@ public class GOVERNMENTAGENCY {
              System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
              System.out.print("\t\t\t\t\tEnter the Code Value of that question example(1A)"
                      + "\n\t\t\t\t\tif more than 1 each number and value should be seprate by space: ");
+             
              scn.nextLine();
              String edit = scn.nextLine().toUpperCase();
              System.out.println(edit);
@@ -577,8 +762,81 @@ public class GOVERNMENTAGENCY {
             
             }
                 }while(!CoE.equalsIgnoreCase("C"));
-		
+	
 	}
+        public static void Birth_NewReq(){
+            System.out.print("\t\t\t\t\tEnter the Code Number That have been given to you after your Fill Up Form: ");
+                                   BFill = scn.next().toUpperCase();
+                                   
+                                   if(Birth_Code.containsKey(BFill)){
+                                       
+                                       if(Birth_ACode.get(BFill) == "Done"){
+                                           System.out.print("This Certificate have been Already approve and certificate is ready"
+                                                   + "\n\t\t\t\t\tif you want another copy press N, if no press X"
+                                                   + "\n\t\t\t\t\t[N] New Coppy"
+                                                   + "\n\t\t\t\t\t[X] Exit: ");
+                                           String NCopy = scn.next().toUpperCase(); 
+                                            
+                                           if(NCopy.equals("N")){
+                                               BirthSemiAdminQues();
+                                           }else if(NCopy.equals("X")){
+                                               
+                                              MainLoop = true;
+                                           }else {
+                                               InvalidErrors();
+                                           }
+                                           
+                                       }else if(Birth_ACode.get(BFill) == "Denied"){
+                                           System.out.println("\t\t\t\t\tThis Request Have been denied already!!!");
+                                           System.out.println("\t\t\t\t\tPlease be more carefull and check your answers before Inputing them");
+                                           BirthSemiAdminQues();
+                                           
+                                           
+                                       }else if(Birth_ACode.get(BFill) == "Request"){
+                                           System.out.println("\t\t\t\t\tThis Data is still waiting to be Approve."
+                                                   + "\n\t\t\t\t\tPlease wait for the Approval of the Admin");
+                                           
+                                       }else if(Birth_ACode.get(BFill) == "Approve"){
+                                           System.out.println("\t\t\t\t\tThis Data is already Approve"
+                                                   + "\n\t\t\t\t\tPlease go to Already Request section to pay for the certificate");
+                                       }
+
+                                        }
+            
+        }
+        public static void Birth_AlreadyReq(){
+             System.out.print("\t\t\t\t\tEnter the Code Number That have been given to you after your Fill Up Form: ");
+                                            AlCode = scn.next().toUpperCase();
+                                           
+                                           if(Birth_ACode.containsKey(AlCode)){
+                                               if(Birth_ACode.get(AlCode) == "Approve"){
+                                                   BirthNavi = AlCode.substring(AlCode.length() - 1);
+                                                   B.setBirthStoreKey(Birth_Code.get(AlCode));                                               
+                                                   do{
+                                                   System.out.println("The Code Have been Approve!!");
+                                                   System.out.println("Choose the Method you want"
+                                                           + "\n[P] Pick Up"
+                                                           + "\n[D] Delivery");
+                                                   PD = scn.next().toUpperCase();
+                                                   
+                                                   if(PD.equals("P")){
+                                                       BirthPickUp();
+                                                   }else if(PD.equals("D")){
+                                                       BirthDelivery();
+                                                   }else{
+                                                       InvalidErrors();
+                                                   }
+                                                   }while(!PD.matches("P|D"));
+                                               }else if(Birth_ACode.get(AlCode) == "Request"){
+                                                   System.out.println("\t\t\t\t\tPlease wait for the Approval of the Request!!");
+                                               }else if(Birth_ACode.get(AlCode) == "Denied"){
+                                                   System.out.println("\t\t\t\t\tYour Request Had been denied!!"
+                                                           + "\n\t\t\t\t\tYour Answer Doesn't Match the data your trying to access");
+                                               }
+                                           }else{
+                                               InvalidErrors();
+                                           }
+        }
 	public static void Birth_Question() {
 		
 		 	Birth_Ques.put("1A", "Child First Name:");
@@ -656,7 +914,7 @@ public class GOVERNMENTAGENCY {
 	        BStore.put("10F" + Navi + B.getBirthStoreKey(), B.getFprovi());
 	        
 	       
-	        BS.add(BStore.get("1A" + B.getBirthStoreKey() + " " + BStore.get("2A" + B.getBirthStoreKey()) + " " + BStore.get("3A" + B.getBirthStoreKey())));
+	        
 	        Navi++;
 		
 	}
@@ -671,7 +929,7 @@ public class GOVERNMENTAGENCY {
 		System.out.print( "\t\t\t\t\t\t\t\t\t\tRegistration Certificate"
                 + "\n\t\t\t\t\t\t\t\t\t\t[B] Birth"
                 + "\n\t\t\t\t\t\t\t\t\t\t[M] Marriage"
-                + "\n\t\t\t\t\t\t\t\t\t\t[D] Death: ");
+                + "\n\t\t\t\t\t\t\t\t\t\t[C] Cenomar: ");
 	}
         public static void BDisplay(){
        
@@ -725,8 +983,7 @@ public class GOVERNMENTAGENCY {
                    System.out.println("\t\t\t\t10F. Province: " + B.getFprovi());               
              
     
-        }    
-        
+        }      
         public static void BirthDelivery(){
             
         }
@@ -808,7 +1065,7 @@ public class GOVERNMENTAGENCY {
             
         }
         public static void BirthCertificate(){
-            System.out.println("\t\t\t========================================================================================================================");
+System.out.println("\t\t\t========================================================================================================================");
 System.out.println(" ");
 System.out.println("\t\t\t\t\t\t\t\t\tRepublic of the Philippines"
         + "\n\t\t\t\t\t\t\t\t   Office of The Civil Registrar General"
@@ -857,7 +1114,7 @@ System.out.println("\t\t\t======================================================
 
         }
         public static void NewTrans(){
-          String NX; 
+  
             do{
             System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
             System.out.print("Do you wish to Continue"
@@ -877,7 +1134,7 @@ System.out.println("\t\t\t======================================================
         }
 	public static void Birth_Semi_Admin() throws InterruptedException, IOException{
                     
-            Customer_View();
+            Customer_View_Birth();
             System.out.println("\t\t\t-----------------------------------------------------");
             System.out.print("\t\t\t\tEnter the code of the Certificate to check the request: ");
             String BCODE = scn.next();
@@ -937,7 +1194,7 @@ System.out.println("\t\t\t======================================================
                                 + "\n\t\t\t\t\t\t[N] No");
                         YorN = scn.next().toUpperCase();
                         if(YorN.equals("Y")){
-                    Birth_ACode.replace(BCODE, "True");
+                    Birth_ACode.replace(BCODE, "Approve");
                             System.out.print("\t\t\t\tProcessing.");
                             Thread.sleep(400);
                             System.out.print(".");
@@ -982,7 +1239,7 @@ System.out.println("\t\t\t======================================================
                 InvalidErrors();
             }
             }while(true);
-            Birth_Semi_Admin();
+            Cenomar_Semi_Admin();
     
 }
         public static void BirthSemiAdminQues(){
@@ -1036,7 +1293,7 @@ System.out.println("\t\t\t======================================================
                                        Birth_Request.put("7F" + BFill, FAGE);
                                        Birth_ACode.replace(BFill, "New");
         }
-        public static void Customer_View(){
+        public static void Customer_View_Birth(){
           
                     System.out.println("\t\t\t\t\t\t-----------------------------------------------------");
                     System.out.println("\t\t\t\t\t\t| User ID    | User Name           | User Status    |");
@@ -1115,271 +1372,30 @@ System.out.println("\t\t\t======================================================
                 
                 case "B":
                     System.out.println("Customers");
-                    Customer_View();
+                    Customer_View_Birth();
                     System.out.println("--------------------------------------------------------");
                     System.out.println("Main Admin"
                             + "\n[A] Add new Customer"
                             + "\n[E] Edit existing Data"
                             + "\n[V] View exisitng Data"
                             + "\n[D] Delete existing Data: ");
-                    String Admin_Purp = scn.next().toUpperCase();
+                    AdminPurp = scn.next().toUpperCase();
                     System.out.println("--------------------------------------------------------");
-                        switch(Admin_Purp){
-                            case "A":
-                                Birth();
-                                B.setBirthStoreKey(B.getFname() + " " + B.getMname() + " " + B.getLname());
-                                Birth_Storage();
-            
-                                Birth_Code.put("B" + BCode_Num, B.getBirthStoreKey());
-                                Birth_ACode.put("B" + BCode_Num, "Approve");
-                                
-                                BCode_Num++;
-                                break;
-                            case "E":
-                                 
-                                
-                                System.out.println("--------------------------------------------------------");
-                                System.out.println("Enter The code you want to edit: ");
-                                BFill = scn.next();
-                                
-                                if(Birth_Code.containsKey(BFill)){
-                                    B.setBirthStoreKey(Birth_Code.get(BFill));
-                                    Edit_Name = B.getBirthStoreKey();
-                                do{
-                                 
-                                    Admin_View();
-                                    System.out.println("Do You wish to continue or Edit?"
-                                            + "\n[C] Continue"
-                                            + "\n[E] Edit: ");
-                                    CoE = scn.next().toUpperCase();
-                                    if(CoE.equals("C")){
-                                        
-                                        B.setBirthStoreKey(BStore.get("1A" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey()) + " " + BStore.get("2A" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey()) + " " + BStore.get("3A" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey()));
-                                        Admin_EditStore();
-                                        Birth_Code.replace(BFill, B.getBirthStoreKey());
-                                        BStore.putAll(Admin_BStore);
-                                        Admin_BStore.clear();
-                                        
-                                    }else if(CoE.equals("E")){
-                                System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
-                                System.out.print("\t\t\t\t\tEnter the Code Value of that question example(1A)"
-                                               + "\n\t\t\t\t\tif more than 1 each number and value should be seprate by space: ");
-                                scn.nextLine();
-                                String edit = scn.nextLine().toUpperCase();
-                                String[] Birth_editor = edit.split(" ");
-             
-                                for(String a: Birth_editor) {
-                                    if(Birth_Ques.containsKey(a)){
-                                                System.out.print("\t\t\t\t\t" + a + " " + Birth_Ques.get(a));
-                                                String change = scn.nextLine();
-       
-                                            switch(a){
-                                                case "1A":
-                                                    BStore.replace("1A" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;            
-                                                case "2A":
-                                                    BStore.replace("2A" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                                                case "3A":
-                                                    BStore.replace("3A" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                                                case "4A":
-                                                    BStore.replace("4A" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                                                case "5A":
-                                                    BStore.replace("5A" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                                                case "6A":
-                                                    BStore.replace("6A" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                                                case "7A":
-                                                    BStore.replace("7A" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                                                case "8A":
-                                                    BStore.replace("8A" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                                                case "9A":
-                                                    BStore.replace("9A" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                                                case "10A":
-                                                    BStore.replace("10A" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                                                case "11A":
-                                                    BStore.replace("11A" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                                                case "12":
-                                                    BStore.replace("12A" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                                                case "1M":
-                                                    BStore.replace("1M" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                                                case "2M":
-                                                    BStore.replace("2M" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                                                case "3M":
-                                                    BStore.replace("3M" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                                                case "4M":
-                                                    BStore.replace("4M" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                                                case "5M":
-                                                    BStore.replace("5M" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                                                case "6M":
-                                                    BStore.replace("6M" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                                                case "7M":
-                                                    BStore.replace("7M" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                                                case "8M":
-                                                    BStore.replace("8M" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                                                case "9M":
-                                                    BStore.replace("9M" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                                                case "10M":
-                                                    BStore.replace("10M" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                                                case "1F":
-                                                    BStore.replace("1F" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                                                case "2F":
-                                                    BStore.replace("2F" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                                                case "3F":
-                                                    BStore.replace("3F" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                                                case "4F":
-                                                    BStore.replace("4F" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                                                case "5F":
-                                                    BStore.replace("5F" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                                                case "6F":
-                                                    BStore.replace("6F" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                                                case "7F":
-                                                    BStore.replace("7F" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                                                case "8F":
-                                                    BStore.replace("8F" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                                                case "9F":
-                                                    BStore.replace("9F" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                                                case "10F":
-                                                    BStore.replace("10F" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
-                                                    break;
-                            
-                                                            }
-                                                        }else{
-                                                            InvalidErrors();
-                                                        }
-                                                    }
-                                                }
-                                                
-                                            }while(!CoE.equalsIgnoreCase("C"));
-                                                
-                                                 }else{
-                                    
-                                                InvalidErrors();
-                                            }
-                                            
-                                                             
-                                break;
-                            case "V":
-                                System.out.print("Enter the code you want to view: ");
-                                BFill = scn.next().toUpperCase();
-                                if(Birth_Code.containsKey(BFill)){
-                                    B.setBirthStoreKey(Birth_Code.get(BFill));
-                                    Admin_View();
-                                    
-                                    System.out.print("Do you wish to edit the status of this Data?"
-                                            + "\n[Y] Yes"
-                                            + "\n[N] No: ");
-                                    CE = scn.next().toUpperCase();
-                                    
-                                    if(CE.equals("Y")){
-                                        if(Birth_Code.get(BFill) == "New"){
-                                            System.out.println("This Data is for a new coppy you want to Approve it?");
-                                        }else if(Birth_ACode.get(BFill) == "Approve"){
-                                            System.out.println("This Data is waiting to be payed");
-                                        }else if(Birth_ACode.get(BFill) == "Request"){
-                                            System.out.println("This Data is on request and waiting to be approve you want to approve it? ");
-                                        }else if(Birth_ACode.get(BFill) == "Denied"){
-                                            System.out.println("This Data have been denied you want to Approve it?");
-                                        }
-                                        
-                                    }else if(CE.equals("N")){
-                                        
-                                    }
-                                }
-                                break;
-                                
-                            case "D":
-                                System.out.print("Delete data or View Deleted History"
-                                        + "\n[D] Delete Data"
-                                        + "\n[V] View Deleted History: ");
-                                String DV = scn.next().toUpperCase();
-                                if(DV.equals("D")){
-                                System.out.print("Enter the code of the Data you want to delete: ");
-                                BFill = scn.next().toUpperCase();
-                                if(Birth_Code.containsKey(BFill)){
-                                    B.setBirthStoreKey(Birth_Code.get(BFill));
-                                    Edit_Name = B.getBirthStoreKey();
-                                    Admin_View();
-                                    System.out.print("Are you sure you want to Delete this Data?"
-                                            + "\n[Y] Yes"
-                                            + "\n[N] No: ");
-                                    CE = scn.next().toUpperCase();
-                                    if(CE.equals("Y")){
-                                        System.out.print("Processing.");
-                                        Thread.sleep(400);
-                                        System.out.print(".");
-                                        Thread.sleep(400);
-                                        System.out.println(".");
-                                        Thread.sleep(400);
-                                        System.out.println("Data Successfully Deleted!!!");
-                                        Admin_EditStore();
-                                        Deleted_Birth.putAll(Admin_BStore);
-                                        Admin_BStore.clear();
-                                        Birth_ACode.replace(BFill, "Deleted");
-                                        System.out.println(Birth_ACode.get(BFill));
-                                        
-                                    }
-                                }
-                            }else if(DV.equals("V")){
-                                    System.out.println("--------------------------------------------------------");
-                                    System.out.println("| User ID        | User Name           | Status        |");
-                                    System.out.println("--------------------------------------------------------");
-                                    
-                                    for(Map.Entry<Object, String> eh: Birth_Code.entrySet()){
-                                        if(Birth_ACode.get(eh.getKey()) == "Deleted"){
-                                            
-                                        System.out.printf("| %-15s| %-20s| %-15s|\n", eh.getKey(), eh.getValue(), Birth_ACode.get(eh.getKey()));
-                                        }
-                                        
-                                    }
-                                    System.out.println("--------------------------------------------------------");;
-                                    
-                                    System.out.print("Enter the code you want to view: ");
-                                    BFill = scn.next().toUpperCase();
-                                    
-                                    if(Birth_Code.containsKey(BFill)){
-                                        B.setBirthStoreKey(Birth_Code.get(BFill));
-                                        Admin_Deleted_View();
-                                    }else{
-                                        InvalidErrors();
-                                    }
+                    Birth_Admin();
 
-                                    
-                                
-                            }
-                        }
-                    
                     break; 
-                case "D":
-                    
+                case "C":
+                    System.out.println("Customers");
+                    Cenomar_Customer_View();
+                    System.out.println("--------------------------------------------------------");
+                    System.out.println("Main Admin"
+                            + "\n[A] Add new Customer"
+                            + "\n[E] Edit existing Data"
+                            + "\n[V] View exisitng Data"
+                            + "\n[D] Delete existing Data: ");
+                    AdminPurp = scn.next().toUpperCase();
+                    System.out.println("--------------------------------------------------------");
+                    Cenomar_Admin();
                     break;
                     
                 case "M":
@@ -1392,7 +1408,7 @@ System.out.println("\t\t\t======================================================
             }
             
         }
-        public static void Admin_View(){
+        public static void Admin_View_Birth(){
             
              System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
                    System.out.println("\t\t\t\t\t\t\t\t\t\tChild Information");
@@ -1532,5 +1548,1354 @@ System.out.println("\t\t\t======================================================
             Admin_BStore.put("10F" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(),BStore.remove("10F" + BFill.substring(BFill.length()-1) + Edit_Name));
             
         }
+        public static void Birth_Admin() throws IOException, InterruptedException{
+            switch(AdminPurp){
+                            case "A":
+                                Birth_Admin_Add();
+                                break;
+                            case "E":           
+                                Birth_Admin_Edit();                           
+                                break;
+                            case "V":
+                                Birth_Admin_View();
+                                break;
+                                
+                            case "D":
+                                Birth_Admin_Delete();
+                                
+                        }
+        }
+        public static void Birth_Admin_Add() throws IOException, InterruptedException{
+                                Birth();
+                                B.setBirthStoreKey(B.getFname() + " " + B.getMname() + " " + B.getLname());
+                                Birth_Storage();
+                                do{
+                                System.out.print("Do you want to Print the Copy"
+                                        + "\n[Y] Yes"
+                                        + "\n[N] No: ");
+                                YoN = scn.next().toUpperCase();
+                                if(YoN.equals("Y")){
+                                    System.out.print("Printing Sample Copy.");
+                                    Thread.sleep(400);
+                                    System.out.print(".");
+                                    Thread.sleep(400);
+                                    System.out.println(".");
+                                    BirthCertificate();
+                                    System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
+                                            System.out.println("\t\t\t\t\t\tThank You for Registering!");
+                                            System.out.println("\t\t\t\t\t\tWarning do not show this code to anyone!!!!");
+                                            System.out.println("\t\t\t\tHeres your Code Number if you ever wanted the Copy of the certificate: B" + BCode_Num);
+                                            System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
+                                }else if(YoN.equals("N")){
+                                    break;
+                                }else{
+                                    InvalidErrors();
+                                }
+                                }while(!YoN.equals("N"));
+                                Birth_Code.put("B" + BCode_Num, B.getBirthStoreKey());
+                                Birth_ACode.put("B" + BCode_Num, "Approve");
+                                
+                                BCode_Num++;
+        }
+        public static void Birth_Admin_View(){
+            System.out.print("Enter the code you want to view: ");
+                                BFill = scn.next().toUpperCase();
+                                if(Birth_Code.containsKey(BFill)){
+                                    B.setBirthStoreKey(Birth_Code.get(BFill));
+                                    Admin_View_Birth();
+                                    
+                                    System.out.print("Do you wish to edit the status of this Data?"
+                                            + "\n[Y] Yes"
+                                            + "\n[N] No: ");
+                                    CE = scn.next().toUpperCase();
+                                    
+                                    if(CE.equals("Y")){
+                                        if(Birth_Code.get(BFill) == "New"){
+                                            
+                                            System.out.println("This Data is for a new coppy you want to Approve it?");
+                                            
+                                        }else if(Birth_ACode.get(BFill) == "Approve"){
+                                            System.out.println("This Data is waiting to be payed");
+                                        }else if(Birth_ACode.get(BFill) == "Request"){
+                                            System.out.println("This Data is on request and waiting to be approve you want to approve it? ");
+                                        }else if(Birth_ACode.get(BFill) == "Denied"){
+                                            System.out.println("This Data have been denied you want to Approve it?");
+                                        }
+                                        
+                                    }else if(CE.equals("N")){
+                                        
+                                    }
+                                }
+            
+        }
+        public static void Birth_Admin_Delete() throws IOException, InterruptedException{
+            
+            System.out.print("Delete data or View Deleted History"
+                                        + "\n[D] Delete Data"
+                                        + "\n[V] View Deleted History: ");
+                                String DV = scn.next().toUpperCase();
+                                if(DV.equals("D")){
+                                System.out.print("Enter the code of the Data you want to delete: ");
+                                BFill = scn.next().toUpperCase();
+                                if(Birth_Code.containsKey(BFill)){
+                                    B.setBirthStoreKey(Birth_Code.get(BFill));
+                                    Edit_Name = B.getBirthStoreKey();
+                                    Admin_View_Birth();
+                                    System.out.print("Are you sure you want to Delete this Data?"
+                                            + "\n[Y] Yes"
+                                            + "\n[N] No: ");
+                                    CE = scn.next().toUpperCase();
+                                    if(CE.equals("Y")){
+                                        System.out.print("Processing.");
+                                        Thread.sleep(400);
+                                        System.out.print(".");
+                                        Thread.sleep(400);
+                                        System.out.println(".");
+                                        Thread.sleep(400);
+                                        System.out.println("Data Successfully Deleted!!!");
+                                        Admin_EditStore();
+                                        Deleted_Birth.putAll(Admin_BStore);
+                                        Admin_BStore.clear();
+                                        Birth_ACode.replace(BFill, "Deleted");
+                                        System.out.println(Birth_ACode.get(BFill));
+                                        
+                                    }
+                                }
+                            }else if(DV.equals("V")){
+                                    System.out.println("--------------------------------------------------------");
+                                    System.out.println("| User ID        | User Name           | Status        |");
+                                    System.out.println("--------------------------------------------------------");
+                                    
+                                    for(Map.Entry<Object, String> eh: Birth_Code.entrySet()){
+                                        if(Birth_ACode.get(eh.getKey()) == "Deleted"){
+                                            
+                                        System.out.printf("| %-15s| %-20s| %-15s|\n", eh.getKey(), eh.getValue(), Birth_ACode.get(eh.getKey()));
+                                        }
+                                        
+                                    }
+                                    System.out.println("--------------------------------------------------------");;
+                                    
+                                    System.out.print("Enter the code you want to view: ");
+                                    BFill = scn.next().toUpperCase();
+                                    
+                                    if(Birth_Code.containsKey(BFill)){
+                                        B.setBirthStoreKey(Birth_Code.get(BFill));
+                                        Admin_Deleted_View();
+                                    }else{
+                                        InvalidErrors();
+                                    }
+
+                                    
+                                
+                            }
+            
+        }
+        public static void Birth_Admin_Edit(){
+            
+            System.out.println("--------------------------------------------------------");
+                                System.out.println("Enter The code you want to edit: ");
+                                BFill = scn.next();
+                                
+                                if(Birth_Code.containsKey(BFill)){
+                                    B.setBirthStoreKey(Birth_Code.get(BFill));
+                                    Edit_Name = B.getBirthStoreKey();
+                                do{
+                                 
+                                    Admin_View_Birth();
+                                    System.out.println("Do You wish to continue or Edit?"
+                                            + "\n[C] Continue"
+                                            + "\n[E] Edit: ");
+                                    CoE = scn.next().toUpperCase();
+                                    if(CoE.equals("C")){
+                                        
+                                        B.setBirthStoreKey(BStore.get("1A" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey()) + " " + BStore.get("2A" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey()) + " " + BStore.get("3A" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey()));
+                                        Admin_EditStore();
+                                        Birth_Code.replace(BFill, B.getBirthStoreKey());
+                                        BStore.putAll(Admin_BStore);
+                                        Admin_BStore.clear();
+                                        
+                                    }else if(CoE.equals("E")){
+                                System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
+                                System.out.print("\t\t\t\t\tEnter the Code Value of that question example(1A)"
+                                               + "\n\t\t\t\t\tif more than 1 each number and value should be seprate by space: ");
+                                scn.nextLine();
+                                String edit = scn.nextLine().toUpperCase();
+                                String[] Birth_editor = edit.split(" ");
+             
+                                for(String a: Birth_editor) {
+                                    if(Birth_Ques.containsKey(a)){
+                                                System.out.print("\t\t\t\t\t" + a + " " + Birth_Ques.get(a));
+                                                String change = scn.nextLine();
+       
+                                            switch(a){
+                                                case "1A":
+                                                    BStore.replace("1A" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;            
+                                                case "2A":
+                                                    BStore.replace("2A" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                                                case "3A":
+                                                    BStore.replace("3A" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                                                case "4A":
+                                                    BStore.replace("4A" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                                                case "5A":
+                                                    BStore.replace("5A" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                                                case "6A":
+                                                    BStore.replace("6A" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                                                case "7A":
+                                                    BStore.replace("7A" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                                                case "8A":
+                                                    BStore.replace("8A" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                                                case "9A":
+                                                    BStore.replace("9A" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                                                case "10A":
+                                                    BStore.replace("10A" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                                                case "11A":
+                                                    BStore.replace("11A" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                                                case "12":
+                                                    BStore.replace("12A" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                                                case "1M":
+                                                    BStore.replace("1M" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                                                case "2M":
+                                                    BStore.replace("2M" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                                                case "3M":
+                                                    BStore.replace("3M" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                                                case "4M":
+                                                    BStore.replace("4M" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                                                case "5M":
+                                                    BStore.replace("5M" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                                                case "6M":
+                                                    BStore.replace("6M" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                                                case "7M":
+                                                    BStore.replace("7M" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                                                case "8M":
+                                                    BStore.replace("8M" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                                                case "9M":
+                                                    BStore.replace("9M" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                                                case "10M":
+                                                    BStore.replace("10M" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                                                case "1F":
+                                                    BStore.replace("1F" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                                                case "2F":
+                                                    BStore.replace("2F" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                                                case "3F":
+                                                    BStore.replace("3F" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                                                case "4F":
+                                                    BStore.replace("4F" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                                                case "5F":
+                                                    BStore.replace("5F" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                                                case "6F":
+                                                    BStore.replace("6F" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                                                case "7F":
+                                                    BStore.replace("7F" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                                                case "8F":
+                                                    BStore.replace("8F" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                                                case "9F":
+                                                    BStore.replace("9F" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                                                case "10F":
+                                                    BStore.replace("10F" + BFill.substring(BFill.length()-1) + B.getBirthStoreKey(), change);
+                                                    break;
+                            
+                                                            }
+                                                        }else{
+                                                            InvalidErrors();
+                                                        }
+                                                    }
+                                                }
+                                                
+                                            }while(!CoE.equalsIgnoreCase("C"));
+                                                
+                                                 }else{
+                                    
+                                                InvalidErrors();
+                                            }         
+        }
+        
+        //Start of Cenomar
+        
+        public static void Cenomar_Storage(){
+            
+		Cenomar_Storage.put("1p" + CNavi + Marriage.getCenoName(), Marriage.getWApplicationName());
+                Cenomar_Storage.put("2p" +  CNavi +Marriage.getCenoName(), Marriage.getWApplicantBirthday()); 
+                Cenomar_Storage.put("3p" + CNavi + Marriage.getCenoName(), Marriage.getWApplicantPlaceOfBirth());
+                Cenomar_Storage.put("4p" + CNavi + Marriage.getCenoName(), Marriage.getWApplicantFatherName());
+                Cenomar_Storage.put("5p" + CNavi + Marriage.getCenoName(), Marriage.getWApplicantMotherName()); 
+                Cenomar_Storage.put("6p" + CNavi + Marriage.getCenoName(), Marriage.getHApplicantName());
+                Cenomar_Storage.put("7p" + CNavi + Marriage.getCenoName(), Marriage.getHApplicantBirthday());
+                Cenomar_Storage.put("8p" + CNavi + Marriage.getCenoName(), Marriage.getHApplicantPlaceOfBirth());
+		Cenomar_Storage.put("9p" + CNavi +Marriage.getCenoName(), Marriage.getHApplicantFatherName());
+		Cenomar_Storage.put("10p" + CNavi +Marriage.getCenoName(), Marriage.getHApplicantMotherName());
+                CNavi++;
+	}
+	public static void Cenomar_Certificate(){
+        System.out.println("   CRS FORM NO. 4 (CENOMAR)");
+        System.out.println("\t\t\t\t\t\t\t\t                       Republic of the Philippines");
+        System.out.println("\t\t\t\t\t\t\t                             PHILIPPINE STATISTIC AUTHORITY ");
+        System.out.println("\t\t\t\t\t\t\t                                        MANILA");
+        System.out.println("\t\t\t\t\t\t\t                          OFFICE OF THE CIVIL REGISTRAR GENERAL");
+	System.out.println("\t\t\t                       TO WHOM IT MAY CONCERN: ");
+	System.out.printf("\t\t\t\t\t We certrify that \t\t\t(1p) %-10s who is alleged to have been", Cenomar_Storage.get("1p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
+        System.out.printf("\t\t\tborn on %-15s ",Cenomar_Storage.get("2p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()), "\t\tin", Cenomar_Storage.get("p3" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()), "\t\tto"  );
+	System.out.printf(Cenomar_Storage.get("4p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()) + "\t\tand", Cenomar_Storage.get("5p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()), "\t\tdoes not apprear in our", "\n\t\t\t\t\t\t\t National Indices of Marriages.");
+        System.out.println();
+	System.out.println();
+	System.out.println("\t\t\t\t\t\t\t This certification is based on the records of 1945-2024 marriages enrolle ");
+        System.out.println("\t\t\t\t\t\t\tDatebase as of June 30, 2024.");
+	System.out.println("\t\t\t\t\t\t\t\t Issued upon the request of " + Cenomar_Storage.get("1p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()) + "for Marriages License.");
+			
+	}
+        public static void Cenomar_Question(){
+        queue.put("1p", "Name:");
+        queue.put("2p","Date of Birth(MM/DD/YYYY): ");
+        queue.put("3p", "Place Of Birth: " );
+        queue.put("4p", "Father Name: ");
+        queue.put("5p","Mother Name:  ");
+        queue.put("6p", "Name:");
+        queue.put("7p","Date of Birth(MM/DD/YYYY): ");
+        queue.put("8p", "Place Of Birth: " );
+        queue.put("9p", "Father Name: ");
+        queue.put("10p","Mother Name:  ");
+        
+     
+    
+    }
+        public static void Cenomar_NewReq(){
+            System.out.print("\t\t\t\t\tEnter the Code Number That have been given to you after your Fill Up Form: ");
+                                   CFill = scn.next().toUpperCase();
+                                   
+                                   if(Cenomar_Code.containsKey(CFill)){
+                                       
+                                       if(Cenomar_CCode.get(CFill) == "Done"){
+                                           System.out.print("This Certificate have been Already approve and certificate is ready"
+                                                   + "\n\t\t\t\t\tif you want another copy press N, if no press X"
+                                                   + "\n\t\t\t\t\t[N] New Coppy"
+                                                   + "\n\t\t\t\t\t[X] Exit: ");
+                                           String NCopy = scn.next().toUpperCase(); 
+                                            
+                                           if(NCopy.equals("N")){
+                                               Cenomar_Request_New();
+                                           }else if(NCopy.equals("X")){
+                                               
+                                           }else {
+                                               InvalidErrors();
+                                           }
+                                           
+                                       }else if(Cenomar_CCode.get(CFill) == "Denied"){
+                                           System.out.println("\t\t\t\t\tThis Request Have been denied already!!!");
+                                           System.out.println("\t\t\t\t\tPlease be more carefull and check your answers before Inputing them");
+                                           Cenomar_Request_New();
+                                           
+                                           
+                                       }else if(Cenomar_CCode.get(CFill) == "Request"){
+                                           System.out.println("\t\t\t\t\tThis Data is still waiting to be Approve."
+                                                   + "\n\t\t\t\t\tPlease wait for the Approval of the Admin");
+                                           
+                                       }else if(Cenomar_CCode.get(CFill) == "Approve"){
+                                           System.out.println("\t\t\t\t\tThis Data is already Approve"
+                                                   + "\n\t\t\t\t\tPlease go to Already Request section to pay for the certificate");
+                                       }
+
+                                        }
+        }
+        public static void Cenomar_AlreadyReq(){
+            
+            System.out.print("\t\t\t\t\tEnter the Code Number That have been given to you after your Fill Up Form: ");
+                                            CFill = scn.next().toUpperCase();
+                                           
+                                           if(Cenomar_CCode.containsKey(CFill)){
+                                               if(Cenomar_CCode.get(CFill) == "Approve"){
+                                                   CenoNavi = CFill.substring(CFill.length() - 1);
+                                                   Marriage.setCenoName(Cenomar_Code.get(CFill));                                               
+                                                   do{
+                                                   System.out.println("The Code Have been Approve!!");
+                                                   System.out.println("Choose the Method you want"
+                                                           + "\n[P] Pick Up"
+                                                           + "\n[D] Delivery");
+                                                   PD = scn.next().toUpperCase();
+                                                   
+                                                   if(PD.equals("P")){
+                                                       BirthPickUp();
+                                                   }else if(PD.equals("D")){
+                                                       BirthDelivery();
+                                                   }else{
+                                                       InvalidErrors();
+                                                   }
+                                                   }while(!PD.matches("P|D"));
+                                               }else if(Cenomar_CCode.get(CFill) == "Request"){
+                                                   System.out.println("\t\t\t\t\tPlease wait for the Approval of the Request!!");
+                                               }else if(Cenomar_CCode.get(CFill) == "Denied"){
+                                                   System.out.println("\t\t\t\t\tYour Request Had been denied!!"
+                                                           + "\n\t\t\t\t\tYour Answer Doesn't Match the data your trying to access");
+                                               }
+                                           }else{
+                                               InvalidErrors();
+                                           }
+        }
+        public static void Cenomar_FillUp(){
+        Scanner scanner = new Scanner(System.in);
+                 
+                // Wife information input
+                System.out.println("\t\t\t\tWife Cenomar Information");
+                System.out.println();
+    
+                System.out.print("\t\t\t\tName: ");
+                String Wname = scanner.nextLine();
+                Marriage.setWApplicantName(Wname);
+                //Date Of Birth
+                boolean birthchecker = true;
+                while(birthchecker){
+                System.out.print("\t\t\t\tDate of Birth (MM/DD/YYYY): ");
+                String dateofbirth = scanner.nextLine();
+                
+                if(!dateofbirth.matches("\\d{2}/\\d{2}/\\d{4}")){
+                
+                System.out.println("\t\t\t\tInvalid Input!");
+                birthchecker = true;
+                }
+                else{
+                    Marriage.setWApplicantBirthday(dateofbirth);
+                    birthchecker = false;
+                }
+    
+                }
+                System.out.print("\t\t\t\tPlace Of Place birth: ");
+                String wifePlaceOfBirth = scanner.nextLine();
+                Marriage.setWApplicantPlaceOfBirth(wifePlaceOfBirth);
+                System.out.print("\t\t\t\tFull name of Father: ");
+                String father = scanner.nextLine();
+                Marriage.setWApplicantFatherName(father);
+                System.out.print("\t\t\t\tFull name of Mother: ");
+                String motherName = scanner.nextLine();
+                Marriage.setWApplicantMotherName(motherName);
+    
+    
+                // Husband information input
+                System.out.println();
+                System.out.println("\t\t\t\tHusband Cenomar Information");
+                System.out.println();
+                
+                System.out.print("\t\t\t\tName: ");
+                String Hname = scanner.nextLine();
+                Marriage.setHApplicantName(Hname);
+                //Date Of Birth
+                boolean Hbirthchecker = true;
+                while(Hbirthchecker){
+                System.out.print("\t\t\t\tDate of Birth (MM/DD/YYYY): ");
+                String Hdateofbirth = scanner.nextLine();
+                
+                if(!Hdateofbirth.matches("\\d{2}/\\d{2}/\\d{4}")){
+                
+                System.out.println("\t\t\t\tInvalid Input!");
+                Hbirthchecker = true;
+                }
+                else{
+                    Marriage.setHApplicantBirthday(Hdateofbirth);
+                    Hbirthchecker = false;
+                }
+    
+                }
+                System.out.print("\t\t\t\tPlace Of Birth: ");
+                String husbandPlaceOfBirth = scanner.nextLine();
+                Marriage.setHApplicantPlaceOfBirth(husbandPlaceOfBirth);
+                System.out.print("\t\t\t\tFull name of Father: ");
+                String Hfather = scanner.nextLine();
+                Marriage.setHApplicantFather(Hfather);
+                System.out.print("\t\t\t\tFull name of Mother: ");
+                String HmotherName = scanner.nextLine();
+                Marriage.setHApplicantMother(HmotherName);
+                
+    
+    
+    }
+        public static void Cenomar_Semi_Admin() throws InterruptedException{
+            Cenomar_Customer_View();
+            System.out.print("Enter the Code you want to change status: ");
+            CFill = scn.next();
+             if(Cenomar_Code.containsKey(CFill)){
+
+                     
+            
+                if(Cenomar_Code.containsKey(CFill)){
+                    
+                    if(Cenomar_CCode.get(CFill) == "Request"){
+                        
+                        CenoNavi = CFill.substring(CFill.length() -1);
+                        Marriage.setCenoName(Cenomar_Code.get(CFill));
+                        displayCenomar();
+                        do{
+                        System.out.print("\t\t\t\tProceed to Approve?([Y] Yes|[N] No): ");
+                        RYN = scn.next().toUpperCase();
+                        
+                        if(RYN.equals("Y")){
+                            System.out.print("Printing Sample Copy.");
+                            Thread.sleep(400);
+                            System.out.print(".");
+                            Thread.sleep(400);
+                            System.out.print(".");
+                            Thread.sleep(400);
+                            System.out.print(".");
+                            Thread.sleep(400);
+                            System.out.println(".");
+                            Cenomar_Certificate();
+                            Cenomar_CCode.replace(CFill, "Approve");
+                            
+                        }else if(RYN.equals("N")){
+                            break;
+                        }
+                        }while(!RYN.equals("Y"));
+                    }else if(Cenomar_CCode.get(CFill) == "New" || Cenomar_CCode.get(CFill) == "Denied"){
+                    
+                    CenoNavi = CFill.substring(CFill.length() -1);
+                    System.out.println("Checking " + CFill + Cenomar_Code.get(CFill));
+                    Marriage.setCenoName(Cenomar_Code.get(CFill));
+                    
+                    System.out.println("\t\t\t\t\t--------------------------------------------");
+                    System.out.println("\t\t\t\t\t| Existing Data       | User Request       |");
+                    System.out.println("\t\t\t\t\t--------------------------------------------");
+                    System.out.printf("\t\t\t\t\t| %-20s| %-19s|\n" , Cenomar_Storage.get("1p" + CenoNavi + Marriage.getCenoName()), Cenomar_Request.get("1p" + CFill));
+                    System.out.printf("\t\t\t\t\t| %-20s| %-19s|\n" , Cenomar_Storage.get("2p" + CenoNavi + Marriage.getCenoName()), Cenomar_Request.get("2p" + CFill));
+                    System.out.printf("\t\t\t\t\t| %-20s| %-19s|\n" , Cenomar_Storage.get("3p" + CenoNavi + Marriage.getCenoName()), Cenomar_Request.get("3p" + CFill));
+                    System.out.printf("\t\t\t\t\t| %-20s| %-19s|\n" , Cenomar_Storage.get("4p" + CenoNavi + Marriage.getCenoName()), Cenomar_Request.get("4p" + CFill));
+                    System.out.printf("\t\t\t\t\t| %-20s| %-19s|\n" , Cenomar_Storage.get("5p" + CenoNavi + Marriage.getCenoName()), Cenomar_Request.get("5p" + CFill));
+                    System.out.printf("\t\t\t\t\t| %-20s| %-19s|\n" , Cenomar_Storage.get("6p" + CenoNavi + Marriage.getCenoName()), Cenomar_Request.get("6p" + CFill));
+                    System.out.printf("\t\t\t\t\t| %-20s| %-19s|\n" , Cenomar_Storage.get("7p" + CenoNavi + Marriage.getCenoName()), Cenomar_Request.get("7p" + CFill));
+                    System.out.printf("\t\t\t\t\t| %-20s| %-19s|\n" , Cenomar_Storage.get("8p" + CenoNavi + Marriage.getCenoName()), Cenomar_Request.get("8p" + CFill));
+                    System.out.printf("\t\t\t\t\t| %-20s| %-19s|\n" , Cenomar_Storage.get("9p" + CenoNavi + Marriage.getCenoName()), Cenomar_Request.get("9p" + CFill));
+                    System.out.printf("\t\t\t\t\t| %-20s| %-19s|\n" , Cenomar_Storage.get("10p" + CenoNavi + Marriage.getCenoName()), Cenomar_Request.get("10p" + CFill));
+                   
+                    System.out.println("\t\t\t\t\t--------------------------------------------");    
+                    do{
+                    System.out.println("\t\t\t\t\t\tConfirm the request?"
+                                + "\n\t\t\t\t\t\t[Y] Yes"
+                                + "\n\t\t\t\t\t\t[N] No");
+                        YorN = scn.next().toUpperCase();
+                        if(YorN.equals("Y")){
+                    Cenomar_CCode.replace(CFill, "Approve");
+                            System.out.print("\t\t\t\tProcessing.");
+                            Thread.sleep(400);
+                            System.out.print(".");
+                            Thread.sleep(400);
+                            System.out.print(".");
+                            Thread.sleep(400);
+                            System.out.println(".");
+                            
+                            System.out.println("\t\t\t\tRequest Successfully Accepted!!");
+                            System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
+                        }else if(YorN.equals("N")){
+                          Cenomar_CCode.replace(CFill, "\t\t\t\tDenied");
+                          break;
+                        }else{
+                            InvalidErrors();
+                        }
+                    }while(!YorN.equals("Y"));
+                    }
+            }else {
+                    InvalidErrors();
+                }
+                }
+        }
+        public static void Cenomar_Customer_View(){
+            
+            System.out.println("\t\t\t\t\t\t-----------------------------------------------------");
+            System.out.println("\t\t\t\t\t\t| User ID    | User Name           | User Status    |");
+            System.out.println("\t\t\t\t\t\t-----------------------------------------------------");
+            System.out.println("\t\t\t\t\t\t|New = New Coppy                                    |");
+            System.out.println("\t\t\t\t\t\t-----------------------------------------------------");
+            
+
+
+
+             for(Map.Entry<Object, String> eh : Cenomar_Code.entrySet()){
+                
+                    if(Cenomar_CCode.get(eh.getKey()) == "New"){
+                    System.out.printf("\t\t\t\t\t\t| %-11s| %-20s| %-15s|\n",eh.getKey() , eh.getValue() , Cenomar_CCode.get(eh.getKey()));
+                    }
+            }
+                
+                
+                System.out.println("\t\t\t\t\t\t-----------------------------------------------------");
+                System.out.println("\t\t\t\t\t\t|Request = Request Sent But not Approve             |");
+                System.out.println("\t\t\t\t\t\t-----------------------------------------------------");
+
+                    
+                    
+                    for(Map.Entry<Object, String> eh : Cenomar_Code.entrySet()){
+                
+                    if(Cenomar_CCode.get(eh.getKey()) == "Request"){
+                    System.out.printf("\t\t\t\t\t\t| %-11s| %-20s| %-15s|\n",eh.getKey() , eh.getValue() , Cenomar_CCode.get(eh.getKey()));
+                            }
+                                       
+                    }
+             
+
+                    System.out.println("\t\t\t\t\t\t-----------------------------------------------------");
+                    System.out.println("\t\t\t\t\t\t|Approve = Waiting for the user to pay              |");
+                    System.out.println("\t\t\t\t\t\t-----------------------------------------------------");
+
+                    for(Map.Entry<Object, String> eh : Cenomar_CCode.entrySet()){
+                
+                    if(Cenomar_CCode.get(eh.getKey()) == "Approve"){
+                    System.out.printf("\t\t\t\t\t\t| %-11s| %-20s| %-15s|\n",eh.getKey() , eh.getValue() , Cenomar_CCode.get(eh.getKey()));
+                     
+                            }                   
+                    }
+             
+             if(!Cenomar_Code.isEmpty()){
+                
+                System.out.println("\t\t\t\t\t\t-----------------------------------------------------");
+                System.out.println("\t\t\t\t\t\t|                                                    |");
+                System.out.println("\t\t\t\t\t\t-----------------------------------------------------");
+            }else{
+                    System.out.println("\t\t\t\t\t\t-----------------------------------------------------");
+                    System.out.println("\t\t\t\t\t\t|Denied = Request Due to Invalid Inputs             |");
+                    System.out.println("\t\t\t\t\t\t-----------------------------------------------------");
+                    
+                    for(Map.Entry<Object, String> eh : Cenomar_Code.entrySet()){
+                
+                    if(Cenomar_CCode.get(eh.getKey()) == "Denied"){
+                        
+                    System.out.printf("\t\t\t\t\t\t| %-11s| %-20s| %-15s|\n",eh.getKey() , eh.getValue() , Cenomar_CCode.get(eh.getKey()));
+                        
+                            }
+                        }
+                    }
+             if(!Cenomar_Code.isEmpty()){
+                
+                System.out.println("\t\t\t\t\t\t-----------------------------------------------------");
+                System.out.println("\t\t\t\t\t\t|                                                    |");
+                System.out.println("\t\t\t\t\t\t-----------------------------------------------------");
+            }else{
+                    System.out.println("\t\t\t\t\t\t-----------------------------------------------------");
+                    System.out.println("\t\t\t\t\t\t|Done = Done with the transaction                   |");
+                    System.out.println("\t\t\t\t\t\t-----------------------------------------------------");
+                    
+                     for(Map.Entry<Object, String> eh : Cenomar_Code.entrySet()){
+                
+                    if(Cenomar_CCode.get(eh.getKey()) == "Done"){
+                        
+                    System.out.printf("\t\t\t\t\t\t| %-11s| %-20s| %-15s|\n",eh.getKey() , eh.getValue() , Cenomar_CCode.get(eh.getKey()));
+                        
+                            }
+                        }
+                    }
+        System.out.println("\t\t\t\t\t\t-----------------------------------------------------");
+        }
+        public static void Cenomar_Request_New(){
+            
+            System.out.print("1p. " + queue.get("1p"));
+            WName = scn.nextLine();
+            System.out.print("2p. " + queue.get("2p"));
+            WDate = scn.next();
+            System.out.print("3p. " + queue.get("3p"));
+            WPlace = scn.nextLine();
+            System.out.print("4p. " + queue.get("4p"));
+            WFather = scn.nextLine();
+            System.out.print("5p. " + queue.get("5p"));
+            WMother = scn.nextLine();
+            System.out.print("6p. " + queue.get("6p"));
+            FName = scn.nextLine();
+            System.out.print("7p. " + queue.get("7p"));
+            FDate = scn.next();
+            System.out.print("8p. " + queue.get("8p"));
+            FPlace = scn.nextLine();
+            System.out.print("9p. " + queue.get("9p"));
+            FFather = scn.nextLine();
+            System.out.print("10p. " + queue.get("10p"));
+            FMother = scn.nextLine();
+            
+            Cenomar_Request.put("1p" + CFill, WName);
+            Cenomar_Request.put("2p" + CFill, WDate);
+            Cenomar_Request.put("3p" + CFill, WPlace);
+            Cenomar_Request.put("4p" + CFill, WFather);
+            Cenomar_Request.put("5p" + CFill, WMother);
+            Cenomar_Request.put("6p" + CFill, FName);
+            Cenomar_Request.put("7p" + CFill, FDate);
+            Cenomar_Request.put("8p" + CFill, FPlace);
+            Cenomar_Request.put("9p" + CFill, FFather);
+            Cenomar_Request.put("10p" + CFill, FMother);
+            
+        }
+        public static void EditCenomar(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("\tEnter the line number you want to edit: ");
+                String lineNumber = scanner.nextLine().toLowerCase();
+                    
+                
+                System.out.println(queue.get(lineNumber));
+                System.out.print("\tEnter the new value: ");
+                String newValue = scanner.nextLine();
+    
+                switch(lineNumber) {
+                    case "1p":    
+                    Marriage.setWApplicantName(newValue);
+                        break;
+                    case "2p":
+                    Marriage.setWApplicantBirthday(newValue);
+                        break;
+                case "3p":
+                Marriage.setWApplicantPlaceOfBirth(newValue);
+                    case "4p":
+                    Marriage.setWApplicantFatherName(newValue);
+                        break;
+                    case "5p":
+                    Marriage.setWApplicantMotherName(newValue);
+                        break;
+                    case "6p":
+                    Marriage.setHApplicantName(newValue);
+                        break;
+                    case "7p":
+                    Marriage.setHApplicantBirthday(newValue);;
+                        break;
+                    case "8p":
+                    Marriage.setHApplicantPlaceOfBirth(newValue);
+                    case "9p":
+                    Marriage.setHApplicantFather(newValue);;
+                        break;
+                    case "10p":
+                    Marriage.setHApplicantMother(newValue);;
+                        break;
+    
+        
+    }
+    }
+        public static void Cenomar_Admin() throws InterruptedException{
+            switch(AdminPurp){
+                case "A":
+                    Cenomar_Add();
+                    break;
+                case "V":
+                    Cenomar_View();
+                    break;
+                case "D":
+                    Cenomar_Delete();
+                    break;
+            }
+        }
+        public static void Cenomar_Add() throws InterruptedException{
+                                CFill = String.valueOf(CCode_Num);
+                                Cenomar_FillUp();
+                                Marriage.setCenoName(Marriage.getWApplicationName());
+                                Cenomar_Storage();
+                                
+                                do{
+                                System.out.print("Do you want to Print the Copy"
+                                        + "\n[Y] Yes"
+                                        + "\n[N] No: ");
+                                YoN = scn.next().toUpperCase();
+                                if(YoN.equals("Y")){
+                                    System.out.print("Printing Sample Copy.");
+                                    Thread.sleep(400);
+                                    System.out.print(".");
+                                    Thread.sleep(400);
+                                    System.out.println(".");
+                                    Cenomar_Certificate();
+                                    System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
+                                            System.out.println("\t\t\t\t\t\tThank You for Registering!");
+                                            System.out.println("\t\t\t\t\t\tWarning do not show this code to anyone!!!!");
+                                            System.out.println("\t\t\t\tHeres your Code Number if you ever wanted the Copy of the certificate: B" + CCode_Num);
+                                            System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
+                                }else if(YoN.equals("N")){
+                                    break;
+                                }else{
+                                    InvalidErrors();
+                                }
+                                }while(!YoN.equals("N"));
+                                
+                                Cenomar_Code.put("C" + CCode_Num, Marriage.getCenoName());
+                                Cenomar_CCode.put("C" + CCode_Num, "Approve");
+                                System.out.println(Cenomar_Code + " " + Cenomar_CCode);
+                                
+                                CCode_Num++;
+        }
+        public static void Cenomar_View(){
+            
+             System.out.print("Enter the code you want to view: ");
+                                CFill = scn.next().toUpperCase();
+                                if(Cenomar_Code.containsKey(CFill)){
+                                    B.setBirthStoreKey(Cenomar_Code.get(CFill));
+                                    Admin_Cenomar_Display();
+                                    
+                                    System.out.print("Do you wish to edit the status of this Data?"
+                                            + "\n[Y] Yes"
+                                            + "\n[N] No: ");
+                                    CE = scn.next().toUpperCase();
+                                    
+                                    if(CE.equals("Y")){
+                                        if(Cenomar_Code.get(CFill) == "New"){
+                                            
+                                            System.out.println("This Data is for a new coppy you want to Approve it?");
+                                            
+                                        }else if(Cenomar_CCode.get(CFill) == "Approve"){
+                                            System.out.println("This Data is waiting to be payed");
+                                        }else if(Cenomar_CCode.get(CFill) == "Request"){
+                                            System.out.println("This Data is on request and waiting to be approve you want to approve it? ");
+                                        }else if(Cenomar_CCode.get(CFill) == "Denied"){
+                                            System.out.println("This Data have been denied you want to Approve it?");
+                                        }
+                                        
+                                    }else if(CE.equals("N")){
+                                        
+                                    }
+                                }
+            
+        }
+        public static void Cenomar_Delete() throws InterruptedException{
+            
+             System.out.print("Delete data or View Deleted History"
+                                        + "\n[D] Delete Data"
+                                        + "\n[V] View Deleted History: ");
+                                String DV = scn.next().toUpperCase();
+                                if(DV.equals("D")){
+                                System.out.print("Enter the code of the Data you want to delete: ");
+                                CFill = scn.next().toUpperCase();
+                                if(Cenomar_Code.containsKey(CFill)){
+                                    Marriage.setCenoName(Cenomar_Code.get(CFill));
+                                    Admin_Cenomar_Display();
+                                    System.out.print("Are you sure you want to Delete this Data?"
+                                            + "\n[Y] Yes"
+                                            + "\n[N] No: ");
+                                    CE = scn.next().toUpperCase();
+                                    if(CE.equals("Y")){
+                                        System.out.print("Processing.");
+                                        Thread.sleep(400);
+                                        System.out.print(".");
+                                        Thread.sleep(400);
+                                        System.out.println(".");
+                                        Thread.sleep(400);
+                                        System.out.println("Data Successfully Deleted!!!");
+                                        Cenomar_Edit_Store();
+                                        Cenomar_Delete.putAll(Admin_CStore);
+                                        Admin_CStore.clear();
+                                        Cenomar_CCode.replace(CFill, "Deleted");
+                                        
+                                    }
+                                }
+                            }else if(DV.equals("V")){
+                                    System.out.println("--------------------------------------------------------");
+                                    System.out.println("| User ID        | User Name           | Status        |");
+                                    System.out.println("--------------------------------------------------------");
+                                    
+                                    for(Map.Entry<Object, String> eh: Birth_Code.entrySet()){
+                                        if(Birth_ACode.get(eh.getKey()) == "Deleted"){
+                                            
+                                        System.out.printf("| %-15s| %-20s| %-15s|\n", eh.getKey(), eh.getValue(), Birth_ACode.get(eh.getKey()));
+                                        }
+                                        
+                                    }
+                                    System.out.println("--------------------------------------------------------");;
+                                    
+                                    System.out.print("Enter the code you want to view: ");
+                                    BFill = scn.next().toUpperCase();
+                                    
+                                    if(Birth_Code.containsKey(BFill)){
+                                        B.setBirthStoreKey(Birth_Code.get(BFill));
+                                        Admin_Deleted_View();
+                                    }else{
+                                        InvalidErrors();
+                                    }
+
+                                    
+                                
+                            }
+            
+        }
+        public static void Cenomar_Edit_Store(){
+            
+                Admin_CStore.put("1p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName(), Cenomar_Storage.remove("1p" + CFill.substring(CFill.length()-1)) + Marriage.getCenoName());
+                Admin_CStore.put("2p" +  CFill.substring(CFill.length()-1) +Marriage.getCenoName(), Cenomar_Storage.remove("1p" + CFill.substring(CFill.length()-1)) + Marriage.getCenoName()); 
+                Admin_CStore.put("3p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName(), Cenomar_Storage.remove("1p" + CFill.substring(CFill.length()-1)) + Marriage.getCenoName());
+                Admin_CStore.put("4p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName(), Cenomar_Storage.remove("1p" + CFill.substring(CFill.length()-1)) + Marriage.getCenoName());
+                Admin_CStore.put("5p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName(), Cenomar_Storage.remove("1p" + CFill.substring(CFill.length()-1)) + Marriage.getCenoName()); 
+                Admin_CStore.put("6p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName(), Cenomar_Storage.remove("1p" + CFill.substring(CFill.length()-1)) + Marriage.getCenoName());
+                Admin_CStore.put("7p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName(), Cenomar_Storage.remove("1p" + CFill.substring(CFill.length()-1)) + Marriage.getCenoName());
+                Admin_CStore.put("8p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName(), Cenomar_Storage.remove("1p" + CFill.substring(CFill.length()-1)) + Marriage.getCenoName());
+		Admin_CStore.put("9p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName(), Cenomar_Storage.remove("1p" + CFill.substring(CFill.length()-1)) + Marriage.getCenoName());
+		Admin_CStore.put("10p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName(), Cenomar_Storage.remove("1p" + CFill.substring(CFill.length()-1)) + Marriage.getCenoName());
+        }
+        public static void displayCenomar(){
+            System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
+            System.out.println("\n\t\t\t\tHUSBAND'S INFORMATION\n");
+            System.out.println("\n\t\t\t\t1p. First Name: " + Marriage.getHApplicantName());
+            System.out.println("\t\t\t\t2p. Date of Birth (MM/DD/YYYY): " +  Marriage.getWApplicantBirthday());
+            System.out.println("\t\t\t\t3p. Place of Birth: " +  Marriage.getWApplicantPlaceOfBirth());
+            System.out.println("\t\t\t\t4p. Father's Name " +  Marriage.getWApplicantFatherName());
+            System.out.println("\t\t\t\t5p. Mother's Name " +  Marriage.getWApplicantMotherName());
+            System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
+            System.out.println("\n\t\t\t\tWIFE'S INFORMATION\n");
+            System.out.println("\n\t\t\t\t6p. First Name: " +  Marriage.getWApplicationName());
+            System.out.println("\t\t\t\t7p. Date of Birth (MM/DD/YYYY): " +  Marriage.getHApplicantBirthday());
+            System.out.println("\t\t\t\t8p. Place of Birth: " +  Marriage.getHApplicantPlaceOfBirth());
+            System.out.println("\t\t\t\t9p. Father's Name " +  Marriage.getHApplicantFatherName());
+            System.out.println("\t\t\t\t10p. Mother's Name " +  Marriage.getHApplicantMotherName());
+    
+    }
+        public static void Admin_Cenomar_Display(){
+            System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
+            System.out.println("\n\t\t\t\tHUSBAND'S INFORMATION\n");
+            System.out.println("\n\t\t\t\t1p. First Name: " + Cenomar_Storage.get("1p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
+            System.out.println("\t\t\t\t2p. Date of Birth (MM/DD/YYYY): " +  Cenomar_Storage.get("2p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
+            System.out.println("\t\t\t\t3p. Place of Birth: " +  Cenomar_Storage.get("3p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
+            System.out.println("\t\t\t\t4p. Father's Name " +  Cenomar_Storage.get("4p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
+            System.out.println("\t\t\t\t5p. Mother's Name " +  Cenomar_Storage.get("5p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
+            System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
+            System.out.println("\n\t\t\t\tWIFE'S INFORMATION\n");
+            System.out.println("\n\t\t\t\t6p. First Name: " +  Cenomar_Storage.get("6p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
+            System.out.println("\t\t\t\t7p. Date of Birth (MM/DD/YYYY): " +  Cenomar_Storage.get("7p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
+            System.out.println("\t\t\t\t8p. Place of Birth: " +  Cenomar_Storage.get("8p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
+            System.out.println("\t\t\t\t9p. Father's Name " +  Cenomar_Storage.get("9p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
+            System.out.println("\t\t\t\t10p. Mother's Name " +  Cenomar_Storage.get("10p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
+        }
+    // Start of Marraige
+        public static void inputMarriageCertificate() {
+        
+        Scanner scanner = new Scanner(System.in);
+        // Wife information input
+        System.out.println("\t\t\t\tWife Information");
+        System.out.println();
+
+        System.out.print("\t\t\t\tFirst Name: ");
+        String firstname = scanner.nextLine();
+        Marriage.setWifeName(firstname);
+        System.out.print("\t\t\t\tMiddle Name: ");
+        String middlename = scanner.nextLine();
+        if(middlename.isEmpty()){
+            Marriage.setWifeMiddle("NA");
+        }
+        else{
+            Marriage.setWifeMiddle(middlename);
+        }
+        System.out.print("\t\t\t\tLast Name: ");
+        String lastname = scanner.nextLine();
+        Marriage.setWifeLast(lastname);
+      
+        //Date Of Birth
+        boolean birthchecker = true;
+        while(birthchecker){
+        System.out.print("\t\t\t\tDate of Birth (MM/DD/YYYY): ");
+        String dateofbirth = scanner.nextLine();
+        
+        if(!dateofbirth.matches("\\d{2}/\\d{2}/\\d{4}")){
+        
+        System.out.println("\t\t\t\tInvalid Input!");
+        birthchecker = true;
+        }
+        else{
+            Marriage.setWifeDateOfBirth(dateofbirth);
+            birthchecker = false;
+        }
+
+        }
+        //Age Checker
+        boolean ageChecker = true;
+        while (ageChecker) {
+            System.out.print("\t\t\t\tAge: ");
+            String age = scanner.nextLine();
+            if(!age.matches("[0-9]|[0-9]{2}")){
+                
+                System.out.println("\t\t\t\tInvalid Input");
+                ageChecker = true;
+            }
+            else{
+                Marriage.setWifeAge(age);
+                ageChecker = false;
+            }
+        }
+        
+       
+
+        System.out.print("\t\t\t\tPlace of Birth (City, Province): ");
+        String province = scanner.nextLine();
+        Marriage.setWifePlaceOfBirth(province);
+        //Gender Checker
+        boolean genderChecker = true;
+        while(genderChecker){
+        
+        System.out.print("\t\t\t\tSex(F/M): ");
+        String sex = scanner.nextLine().toUpperCase();
+        
+        if(sex.equalsIgnoreCase("F") || sex.equalsIgnoreCase("M")){
+            Marriage.setWifeSex(sex);
+        genderChecker =false;
+        }
+        else{
+            System.out.println("\t\t\t\tInvalid Input!");
+            genderChecker =true;
+        }
+    }
+        System.out.print("\t\t\t\tCitizenship: ");
+        String citizen = scanner.nextLine();
+        Marriage.setWifeCitezenship(citizen);
+
+        System.out.print("\t\t\t\tResidence (Province): ");
+        String provincename = scanner.nextLine();
+        Marriage.setWifeProvince(provincename);
+
+        System.out.print("\t\t\t\tResidence (City/Municipality): ");
+        String city = scanner.nextLine();
+        Marriage.setWifeCity(city);
+
+        System.out.print("\t\t\t\tResidence (Barangay): ");
+        String barangay = scanner.nextLine();
+        Marriage.setWifeBarangay(barangay);
+
+        System.out.print("\t\t\t\tResidence (House Number/Street): ");
+        String residence = scanner.nextLine();
+        Marriage.setWifeStreet(residence);
+
+        System.out.print("\t\t\t\tReligion: ");
+        String religion = scanner.nextLine();
+        Marriage.setWifeReligion(religion);
+
+        System.out.print("\t\t\t\tCivil status: ");
+        String status = scanner.nextLine();
+        Marriage.setWifeStatus(status);
+
+        System.out.print("\t\t\t\tFull name of Father: ");
+        String father = scanner.nextLine();
+        Marriage.setWifeFather(father);
+
+        System.out.print( "\t\t\t\tCitizenship of Father: ");
+        String fatherCitizen = scanner.nextLine();
+        Marriage.setWifeFatherCitizen(fatherCitizen);
+
+        System.out.print("\t\t\t\tFull name of Mother: ");
+        String motherName = scanner.nextLine();
+        Marriage.setWifeMother(motherName);
+
+        System.out.print("\t\t\t\tCitizenship of Mother: ");
+        String motheCitizen = scanner.nextLine();
+        Marriage.setWifeMotherCitizen(motheCitizen);
+
+        // Husband Part
+        System.out.println("\n\t\t\t\tHusband Information");
+        System.out.println();
+        System.out.print("\t\t\t\tFirst Name: ");
+        String hfirstname = scanner.nextLine();
+        Marriage.setHusbandName(hfirstname);
+         
+
+        System.out.print("\t\t\t\tMiddle Name: ");
+        String hmiddlename = scanner.nextLine();
+        if(hmiddlename.isEmpty()){
+            Marriage.setHusbandMiddle("NA");
+        }
+        else{
+            Marriage.setHusbandMiddle(hmiddlename);
+        }
+
+        System.out.print("\t\t\t\tLast Name: ");
+        String hlastname = scanner.nextLine();
+        Marriage.setHusbandLast(hlastname);
+        
+        //Husband Date Of Birth
+        boolean Husbandchcker = true;
+        while(Husbandchcker){
+        System.out.print("\t\t\t\tDate of Birth (MM/DD/YYYY): ");
+        String hdateofbirth = scanner.nextLine();
+        if(!hdateofbirth.matches("\\d{2}/\\d{2}/\\d{4}")){
+            System.out.println("\t\t\t\tInvalid Input!");
+            Husbandchcker = true;
+        }
+        else{
+            Marriage.setHusbandDateOfBirth(hdateofbirth);
+            Husbandchcker = false;
+        }
+        
+
+        }
+        // Husband Age Checker
+        boolean husbandAGeCHcekr = true;
+        while (husbandAGeCHcekr) {
+        System.out.print("\t\t\t\tAge: ");
+        String hage = scanner.nextLine();
+        
+        if(!hage.matches("[0-9]|[0-9]{2}")){
+            System.out.println("\t\t\t\tInvalid Input");
+            husbandAGeCHcekr = true;
+        }
+        else{
+            Marriage.setHusbandAge(hage);
+            husbandAGeCHcekr = false;
+            
+        }
+                    }
+
+        System.out.print("\t\t\t\tPlace of Birth (City, Province): ");
+        String hprovince = scanner.nextLine();
+        Marriage.setHusbandPlaceOfBirth(hprovince);
+        //Husband Checker
+        boolean husbandChcker = true;
+        while(husbandChcker){
+        System.out.print("\t\t\t\tSex(f/m): ");
+        String hsex = scanner.nextLine().toUpperCase();
+        
+        if(hsex.equalsIgnoreCase("M") || hsex.equalsIgnoreCase("F")){
+        Marriage.setHusbandSex(hsex);
+        husbandChcker = false;
+        
+        
+        }
+        else{
+            System.out.println("\t\t\t\tInvalid Input");
+            husbandChcker = true;
+
+        }
+                    }
+
+        System.out.print("\t\t\t\tCitizenship: ");
+        String hcitizen = scanner.nextLine();
+        Marriage.setHusbandCitizen(hcitizen);
+
+        System.out.print("\t\t\t\tResidence (Province): ");
+        String hprovincename = scanner.nextLine();
+        Marriage.setHusbandProvince(hprovincename);
+
+        System.out.print("\t\t\t\tResidence (City/Municipality): ");
+        String hcity = scanner.nextLine();
+        Marriage.setHusbandCity(hcity);
+
+        System.out.print("\t\t\t\tResidence (Barangay): ");
+        String hbarangay = scanner.nextLine();
+        Marriage.setHusbandBarangay(hbarangay);
+
+        System.out.print("\t\t\t\tResidence (House Number/Street): ");
+        String hresidence = scanner.nextLine();
+        Marriage.setHusbandStreet(hresidence);
+
+        System.out.print("\t\t\t\tReligion: ");
+        String hreligion = scanner.nextLine();
+        Marriage.setHusbandReligion(hreligion);
+
+        System.out.print("\t\t\t\tCivil status: ");
+        String hstatus = scanner.nextLine();
+        Marriage.setHusbandStatus(hstatus);
+
+        System.out.print("\t\t\t\tFull name of Father: ");
+        String hfather = scanner.nextLine();
+        Marriage.setHusbandFather(hfather);
+
+        System.out.print( "\t\t\t\tCitizenship of Father: ");
+        String hfatherCitizen = scanner.nextLine();
+        Marriage.setHusbandFatherCitizen(hfatherCitizen);
+
+        System.out.print("\t\t\t\tFull name of Mother: ");
+        String hmotherName = scanner.nextLine();
+        Marriage.setHusbandMother(hmotherName);
+
+        System.out.print("\t\t\t\tCitizenship of Mother: ");
+        String hmotheCitizen = scanner.nextLine();
+        Marriage.setHusbandMotherCitizen(hmotheCitizen);
+        
+        System.out.print("\t\t\t\tPlace of Marriage: ");
+        String placeMarraige = scanner.nextLine();
+        Marriage.setPlaceMarriage(placeMarraige);
+        
+        System.out.print("\t\t\t\tDate of Marriage: ");
+        String dateMarriage = scanner.nextLine();
+        Marriage.setDateMarriage(dateMarriage);
+
+    }
+        public static void displayCertificateInformation(){
+        System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("\n\t\t\t\tWIFE'S INFORMATION\n");
+        System.out.println("\n\t\t\t\t1a. First Name: " + Marriage.getWifeFirst());
+        System.out.println("\t\t\t\t1b. Middle Name: " + Marriage.getWifeMiddle());
+        System.out.println("\t\t\t\t1c. Last Name: " +  Marriage.getWifeLast());
+        System.out.println("\t\t\t\t2. Date of Birth (MM/DD/YYYY): " + Marriage.getWifeDateOfBirth());
+        System.out.println("\t\t\t\t3. Age: " + Marriage.getWifeAge());
+        System.out.println("\t\t\t\t4. Place of Birth (City, Province): " + Marriage.getWifePlaceOfBirth());
+        System.out.println("\t\t\t\t5. Sex(f/m): " + Marriage.getWifeSex());
+        System.out.println("\t\t\t\t6. Citizenship: " + Marriage.getWifeCitzen());
+        System.out.println("\t\t\t\t7a. Residence (Province): " + Marriage.getWifeProvince());
+        System.out.println("\t\t\t\t7b. Residence (City/Municipality): " + Marriage.getWifeCity());
+        System.out.println("\t\t\t\t7c. Residence (Baranggay): " + Marriage.getWifeBarangay());
+        System.out.println("\t\t\t\t7d. Residence (House Number/Street): " + Marriage.getWifeStreet());
+        System.out.println("\t\t\t\t8. Religion: " + Marriage.getWifeReligion());
+        System.out.println("\t\t\t\t9. Civil status: " + Marriage.getWifeStatus());
+        System.out.println("\t\t\t\t10. Full name of Father: " + Marriage.getWifeFather());
+        System.out.println("\t\t\t\t11. Citizenship of Father: " + Marriage.getWifeFatherCitizen());
+        System.out.println("\t\t\t\t12. Full name of Mother: " + Marriage.getWifeMother());
+        System.out.println("\t\t\t\t13. Citizenship of Mother: " + Marriage.getWifeMotherCitizen());
+        System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("\n\t\t\t\tHUSBAND'S INFORMATION\n");
+        System.out.println("\t\t\t\t14a. First Name: " + Marriage.getHusbandFirst());
+        System.out.println("\t\t\t\t14b. Middle Name: " + Marriage.getHusbandMiddle());
+        System.out.println("\t\t\t\t14c. Last Name: " + Marriage.getHusbandLast());
+        System.out.println("\t\t\t\t15. Date of Birth (MM/DD/YYYY): " + Marriage.getHusbandDateOfBirth());
+        System.out.println("\t\t\t\t16. Age: " + Marriage.getHusbandAge());
+        System.out.println("\t\t\t\t17. Place of Birth (City, Province): " + Marriage.getHusbandPlaceOfBirth());
+        System.out.println("\t\t\t\t18. Sex(f/m): " + Marriage.getHusbandSex());
+        System.out.println("\t\t\t\t19. Citizenship: " + Marriage.getHusbandCitizen());
+        System.out.println("\t\t\t\t20a. Residence (Province): " + Marriage.getHusbandProvince());
+        System.out.println("\t\t\t\t20b. Residence (City/Municipality): " + Marriage.getHusbandCity());
+        System.out.println("\t\t\t\t20c. Residence (Baranggay): " + Marriage.getHusbandBarangay());
+        System.out.println("\t\t\t\t20d. Residence (House Number/Street): " + Marriage.getHusbandStreet());
+        System.out.println("\t\t\t\t21. Religion: " + Marriage.getHusbandReligion());
+        System.out.println("\t\t\t\t22. Civil status: " + Marriage.getHusbandStatus());
+        System.out.println("\t\t\t\t23. Full name of Father: " + Marriage.getHusbandFather());
+        System.out.println("\t\t\t\t24. Citizenship of Father: " + Marriage.getHusbandFatherCitizen());
+        System.out.println("\t\t\t\t25. Full name of Mother: " + Marriage.getHusbandMother());
+        System.out.println("\t\t\t\t26. Citizenship of Mother: " + Marriage.getHusbandMotherCitizen());
+            System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("\t\t\t\tPlace of Marriage" + Marriage.getPlaceMarriage());
+        System.out.println("\t\t\t\tDate of Marriage" + Marriage.getDateMarriage());
+        System.out.println("\t\t\t\tThis is to certify that I " + Marriage.getWifeFirst()+" "+Marriage.getWifeMiddle()+" "+Marriage.getWifeLast() +" and "+ Marriage.getHusbandFirst()+" "+Marriage.getHusbandMiddle()+" "+Marriage.getHusbandLast()
+                            +",\n\t\t\t\tboth of legal age, of our own free will and accord,"
+                            + "\n\t\t\t\tthe presence of the person solemmizing this marriage and of the witness named below,"
+                            + "\n\t\t\t\ttake each other as husband and wife.");
+    }
+        public static void Marriage_Question(){
+    
+        ques.put("1a", "First Name:");
+        ques.put("1b","Middle Name:" );
+        ques.put("1c","Last Name: ");
+        ques.put("2","Date of Birth(MM/DD/YYYY)");
+        ques.put("3","Age: ");
+        ques.put("4", "Place of Birth (City, Province): ");
+        ques.put("5", "Sex (f/m):" );
+        ques.put("6", "Citizenship");
+        ques.put("7a", "Residence (Province): ");
+        ques.put("7b", "Residence (City/Municipality): ");
+        ques.put("7c", "Residence (Baranggay): ");
+        ques.put("7d","Residence (House Number/Street): ");
+        ques.put("8", "Religion: ");
+        ques.put("9","Civil Status: " );
+        ques.put("10", "Full name of Father: ");
+        ques.put("11", "Citizenship of Father: ");
+        ques.put("12", "Full name of Mother: ");
+        ques.put("13","Citizenship of Mother: ");
+        ques.put("14a", "First Name: ");
+        ques.put("14b", "Middle Name: ");
+        ques.put("14c", "Last Name: ");
+        ques.put("15 ", "Date  of Birth (MM/DD/YYYY): ");
+        ques.put("16", "Age: ");
+        ques.put("17", "Place of Birth (City/Province): ");
+        ques.put("18","Sex(f/m): ");
+        ques.put("19","Citizenship: ");
+        ques.put("20a","Residence (Province): ");
+        ques.put("20b","Residence (City/Municipality): ");
+        ques.put("20c","Residence (Baranggay): ");
+        ques.put("20d","Residence (House Number/Street): ");
+        ques.put("23"," Full name of Father: " );
+        ques.put("24", "Citizenship of Father: " );
+        ques.put("25", "Full name of Mother: ");
+        ques.put("26", "Citizenship of Mother: ");
+    }
+        
+        public static void printingForm(){
+        System.out.println("\t\t\t\t\t=======================================================================================================================");
+        System.out.println("\t\t\t\t\t\t\t\t                       Republic of the Philippines");
+        System.out.println("\t\t\t\t\t\t\t                            OFFICE OF THE CIVIL REGISTRAR GENERAL");
+         System.out.println("\t\t\t\t\t\t\t\t                         CERTIFICATE OF MARRIAGE");
+        System.out.println("\t\t\t\t\t=======================================================================================================================");	 
+        System.out.println("\t\t\t\t\t-----------------------------------------------------------------------------------------------------------------------");
+        System.out.println("\t\t\t\t\t|WIFE\t\t\t\t\t|HUSBAND");
+        System.out.println("\t\t\t\t\t-----------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("\t\t\t\t\tName of Contracting Parties\t\t|(1a) %-14s|(1b) %-14s|(14a) %-14s|(14b) %-14s\n\t\t\t\t\t|(1c) %-34s|(14c) %-14s\n", 
+                            Marriage_Storage.get("1a" + MNavi + Marriage.getSMName()), Marriage_Storage.get("14a" + MNavi + Marriage.getSMName()), Marriage_Storage.get("1b" + MNavi + Marriage.getSMName()), Marriage_Storage.get("14b" + MNavi + Marriage.getSMName()),Marriage_Storage.get("1c" + MNavi + Marriage.getSMName()),Marriage_Storage.get("14c" + MNavi + Marriage.getSMName()));
+        System.out.println("\t\t\t\t\t-----------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("\t\t\t\t\tDate of Birth/Age\t\t\t|(2) %-15s|(3) %-15s|(15) %-15s|(16) %-15s\n",Marriage_Storage.get("15" + MNavi + Marriage.getSMName()),Marriage_Storage.get("2" + MNavi + Marriage.getSMName()),Marriage_Storage.get("16" + MNavi + Marriage.getSMName()), Marriage_Storage.get("3" + MNavi + Marriage.getSMName()));
+        System.out.println("\t\t\t\t\t-----------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("\t\t\t\t\tPlace of Birth\t\t\t\t|(4) %-35s|(17) %-15s\n", Marriage_Storage.get("17" + MNavi + Marriage.getSMName()),Marriage_Storage.get("4" + MNavi + Marriage.getSMName()));
+        System.out.println("\t\t\t\t\t-----------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("\t\t\t\t\tSex (Male/Female)\t\t\t|(5) %-30s\t|(18) %-10s\n", Marriage_Storage.get("18" + MNavi + Marriage.getSMName()), Marriage_Storage.get("5" + MNavi + Marriage.getSMName()));
+        System.out.println("\t\t\t\t\t-----------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("\t\t\t\t\tCitizenship\t\t\t\t|(6) %-30s\t|(19) %-20s\n",Marriage_Storage.get("19" + MNavi + Marriage.getSMName()),Marriage_Storage.get("6" + MNavi + Marriage.getSMName()));
+        System.out.println("\t\t\t\t\t-----------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("\t\t\t\t\tResidence\t\t\t\t|(7a) %-14s|(7a) %-14s|(20a) %-14s|(20b) %-14s\n\t\t\t\t\t|(7c) %-14s|(7d) %-14s|(20c) %-14s|(20d) %-14s\n",
+                Marriage_Storage.get("7a" + MNavi + Marriage.getSMName()), Marriage_Storage.get("20a" + MNavi + Marriage.getSMName()),Marriage_Storage.get("7b" + MNavi + Marriage.getSMName()),
+                Marriage_Storage.get("20b" + MNavi + Marriage.getSMName()),Marriage_Storage.get("7c" + MNavi + Marriage.getSMName()),Marriage_Storage.get("7d" + MNavi + Marriage.getSMName()),Marriage_Storage.get("20c" + MNavi + Marriage.getSMName()),Marriage_Storage.get("20d" + MNavi + Marriage.getSMName()));	   
+        System.out.println("\t\t\t\t\t-----------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("\t\t\t\t\tReligion\t\t\t\t|(8) %-35s|(21) %-20s\n",Marriage_Storage.get("8" + MNavi + Marriage.getSMName()), Marriage_Storage.get("21" + MNavi + Marriage.getSMName()));
+        System.out.println("\t\t\t\t\t-----------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("\t\t\t\t\tCivil Status\t\t\t\t|(9) %-35s|(22) %-15s\n",Marriage_Storage.get("9" + MNavi + Marriage.getSMName()),Marriage_Storage.get("22" + MNavi + Marriage.getSMName()));
+        System.out.println("\t\t\t\t\t-----------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("\t\t\t\t\tName of Father\t\t\t\t|(10) %-34s|(23) %-15s\n", Marriage_Storage.get("10" + MNavi + Marriage.getSMName()), Marriage_Storage.get("23" + MNavi + Marriage.getSMName()));
+        System.out.println("\t\t\t\t\t-----------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("\t\t\t\t\tCitizenship\t\t\t\t|(11) %-34s|(24) %-15s\n", Marriage_Storage.get("11" + MNavi + Marriage.getSMName()),Marriage_Storage.get("24" + MNavi + Marriage.getSMName()));
+        System.out.println("\t\t\t\t\t-----------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("\t\t\t\t\tName of Mother\t\t\t\t|(12) %-34s|(25) %-15s\n", Marriage_Storage.get("12" + MNavi + Marriage.getSMName()),Marriage_Storage.get("25" + MNavi + Marriage.getSMName()));
+        System.out.println("\t\t\t\t\t-----------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("\t\t\t\t\tCitizenship\t\t\t\t|(13) %-34s|(26) %-15s\n", Marriage_Storage.get("13" + MNavi + Marriage.getSMName()),Marriage_Storage.get("26" + MNavi + Marriage.getSMName()));
+        System.out.println("\t\t\t\t\t-----------------------------------------------------------------------------------------------------------------------");
+        System.out.println("\t\t\t\t\tPlace of Marriage: "+ Marriage_Storage.get("27" + MNavi + Marriage.getSMName()));
+        System.out.println("\t\t\t\t\tDate Of Marriage: "+ Marriage_Storage.get("28" + MNavi + Marriage.getSMName()));
+        System.out.println("\t\t\t\t\t-----------------------------------------------------------------------------------------------------------------------");
+}
+        public static void SMarriageinfo(){
+    Marriage_Storage.put("1a" +  MNavi + Marriage.getSMName(),  Marriage.getWifeFirst());
+    Marriage_Storage.put("1b" + MNavi + Marriage.getSMName(),  Marriage.getWifeMiddle());
+    Marriage_Storage.put("1c" + MNavi + Marriage.getSMName(),  Marriage.getWifeLast());
+    Marriage_Storage.put("2" + MNavi + Marriage.getSMName(),  Marriage.getWifeDateOfBirth());
+    Marriage_Storage.put("3" + MNavi + Marriage.getSMName(),  Marriage.getWifeAge()); 
+    Marriage_Storage.put("4" + MNavi + Marriage.getSMName(),  Marriage.getWifePlaceOfBirth());
+    Marriage_Storage.put("5" + MNavi + Marriage.getSMName(),   Marriage.getWifeSex());
+    Marriage_Storage.put("6" + MNavi + Marriage.getSMName(),  Marriage.getWifeCitzen());
+    Marriage_Storage.put("7a" + MNavi +  Marriage.getSMName(),  Marriage.getWifeProvince());
+    Marriage_Storage.put("7b" + MNavi + Marriage.getSMName(),   Marriage.getWifeCity());
+    Marriage_Storage.put("7c" + MNavi + Marriage.getSMName(),  Marriage.getWifeBarangay());
+    Marriage_Storage.put("7d" + MNavi + Marriage.getSMName(), Marriage.getWifeStreet());
+    Marriage_Storage.put("8" + MNavi + Marriage.getSMName(),   Marriage.getWifeReligion());
+    Marriage_Storage.put("9" + MNavi + Marriage.getSMName(),  Marriage.getWifeStatus());
+    Marriage_Storage.put("10" + MNavi + Marriage.getSMName(), Marriage.getWifeFather());
+    Marriage_Storage.put("11" + MNavi + Marriage.getSMName(),   Marriage.getWifeFatherCitizen());
+    Marriage_Storage.put("12" + MNavi + Marriage.getSMName(),  Marriage.getWifeMother());
+    Marriage_Storage.put("13" + MNavi + Marriage.getSMName(), Marriage.getWifeMotherCitizen());
+    
+    //HUSBAND
+    Marriage_Storage.put("14a" + MNavi + Marriage.getSMName(),  Marriage.getHusbandFirst());
+    Marriage_Storage.put("14b" + MNavi + Marriage.getSMName(),  Marriage.getHusbandMiddle());
+    Marriage_Storage.put("14c" + MNavi + Marriage.getSMName(),  Marriage.getHusbandLast());
+    Marriage_Storage.put("15" + MNavi + Marriage.getSMName(),  Marriage.getHusbandDateOfBirth());
+    Marriage_Storage.put("16" + MNavi + Marriage.getSMName(),  Marriage.getHusbandAge());
+    Marriage_Storage.put("17" + MNavi + Marriage.getSMName(),  Marriage.getHusbandPlaceOfBirth());
+    Marriage_Storage.put("18" + MNavi + Marriage.getSMName(),  Marriage.getHusbandSex());
+    Marriage_Storage.put("19" + MNavi + Marriage.getSMName(),  Marriage.getHusbandCitizen());
+    Marriage_Storage.put("20a" + MNavi + Marriage.getSMName(),   Marriage.getHusbandProvince());
+    Marriage_Storage.put("20b" + MNavi + Marriage.getSMName(),   Marriage.getHusbandCity());
+    Marriage_Storage.put("20c" + MNavi + Marriage.getSMName(),  Marriage.getHusbandBarangay());
+    Marriage_Storage.put("20d" + MNavi + Marriage.getSMName(),  Marriage.getHusbandStreet());
+    Marriage_Storage.put("21" + MNavi + Marriage.getSMName(),  Marriage.getHusbandReligion());
+    Marriage_Storage.put("22" + MNavi + Marriage.getSMName(),  Marriage.getHusbandStatus());
+    Marriage_Storage.put("23" + MNavi + Marriage.getSMName(),   Marriage.getHusbandFather());
+    Marriage_Storage.put("24" + MNavi + Marriage.getSMName(),    Marriage.getHusbandFatherCitizen());
+    Marriage_Storage.put("25" + MNavi + Marriage.getSMName(),  Marriage.getHusbandMother());
+    Marriage_Storage.put("26" + MNavi + Marriage.getSMName(),  Marriage.getHusbandMotherCitizen());
+    Marriage_Storage.put("27" + MNavi + Marriage.getSMName(),  Marriage.getPlaceMarriage());
+    Marriage_Storage.put("28" + MNavi + Marriage.getSMName(),  Marriage.getDateMarriage());
+    
+    MNavi++;
+    
+    }
+        
 }
         
