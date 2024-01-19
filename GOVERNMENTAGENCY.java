@@ -1,4 +1,4 @@
-package government.agency;
+package government_agency;
 
 import java.util.Scanner;
 import java.util.LinkedHashMap;
@@ -137,27 +137,28 @@ public class GOVERNMENTAGENCY {
                         Marriage_Question();
 			
 			do {
-       System.out.println("\n\t\t\t=============================================================================================================================");
-       System.out.print("\t\t\t\t\t\t\t           ________  ____  ____  _______   __    _____  ___      \n" +
-                        "\t\t\t\t\t\t\t          /\"       )(\"  _||_ \" ||   _  \"\\ |\" \\  (\\\"   \\|\"  \\     \n" +
-                        "\t\t\t\t\t\t\t         (:   \\___/ |   (  ) : |(. |_)  :)||  | |.\\\\   \\    |    \n" +
-                        "\t\t\t\t\t\t\t          \\___  \\   (:  |  | . )|:     \\/ |:  | |: \\.   \\\\  |    \n" +
-                        "\t\t\t\t\t\t\t          __/  \\\\   \\\\ \\__/ // (|  _  \\\\ |.  | |.  \\    \\. |    \n" +
-                        "\t\t\t\t\t\t\t          /\" \\   :)  /\\\\ __ //\\ |: |_)  :)/\\  |\\|    \\    \\ |    \n" +
-                        "\t\t\t\t\t\t\t         (_______/  (__________)(_______/(__\\_|_)\\___|\\____\\)    \n" +
-                        "\t\t\t\t\t\t\t                                                                    \n" +
-                        "\t\t\t\t\t\t\t      __       _______    _______  _____  ___    ______   ___  ___  \n" +
-                        "\t\t\t\t\t\t\t     /\"\"\\     /\" _   \"|  /\"     \"|(\\\"   \\|\"  \\  /\" _  \"\\ |\"  \\/\"  | \n" +
-                        "\t\t\t\t\t\t\t    /    \\   (: ( \\___) (: ______)|.\\\\   \\    |(: ( \\___) \\   \\  /  \n" +
-                        "\t\t\t\t\t\t\t   /' /\\  \\   \\/ \\       \\/    |  |: \\.   \\\\  | \\/ \\       \\\\  \\/   \n" +
-                        "\t\t\t\t\t\t\t  //  __'  \\  //  \\ ___  // ___)_ |.  \\    \\. | //  \\ _    /   /    \n" +
-                        "\t\t\t\t\t\t\t /   /  \\\\  \\(:   _(  _|(:      \"||    \\    \\ |(:   _) \\  /   /     \n" +
-                        "\t\t\t\t\t\t\t(___/    \\___)\\_______)  \\_______) \\___|\\____\\) \\_______)|___/      \n" +
+       System.out.println("\n\t\t\t============================================================================================================================================");
+
+       System.out.print("\t\t\t\t\t\t\t\t           ________  ____  ____  _______   __    _____  ___      \n" +
+                        "\t\t\t\t\t\t\t\t          /\"       )(\"  _||_ \" ||   _  \"\\ |\" \\  (\\\"   \\|\"  \\     \n" +
+                        "\t\t\t\t\t\t\t\t         (:   \\___/ |   (  ) : |(. |_)  :)||  | |.\\\\   \\    |    \n" +
+                        "\t\t\t\t\t\t\t\t          \\___  \\   (:  |  | . )|:     \\/ |:  | |: \\.   \\\\  |    \n" +
+                        "\t\t\t\t\t\t\t\t          __/  \\\\   \\\\ \\__/ // (|  _  \\\\ |.  | |.  \\    \\. |    \n" +
+                        "\t\t\t\t\t\t\t\t          /\" \\   :)  /\\\\ __ //\\ |: |_)  :)/\\  |\\|    \\    \\ |    \n" +
+                        "\t\t\t\t\t\t\t\t         (_______/  (__________)(_______/(__\\_|_)\\___|\\____\\)    \n" +
+                        "\t\t\t\t\t\t\t\t                                                                    \n" +
+                        "\t\t\t\t\t\t\t\t      __       _______    _______  _____  ___    ______   ___  ___  \n" +
+                        "\t\t\t\t\t\t\t\t     /\"\"\\     /\" _   \"|  /\"     \"|(\\\"   \\|\"  \\  /\" _  \"\\ |\"  \\/\"  | \n" +
+                        "\t\t\t\t\t\t\t\t    /    \\   (: ( \\___) (: ______)|.\\\\   \\    |(: ( \\___) \\   \\  /  \n" +
+                        "\t\t\t\t\t\t\t\t   /' /\\  \\   \\/ \\       \\/    |  |: \\.   \\\\  | \\/ \\       \\\\  \\/   \n" +
+                        "\t\t\t\t\t\t\t\t  //  __'  \\  //  \\ ___  // ___)_ |.  \\    \\. | //  \\ _    /   /    \n" +
+                        "\t\t\t\t\t\t\t\t /   /  \\\\  \\(:   _(  _|(:      \"||    \\    \\ |(:   _) \\  /   /     \n" +
+                        "\t\t\t\t\t\t\t\t(___/    \\___)\\_______)  \\_______) \\___|\\____\\) \\_______)|___/      \n" +
                         "\t\t\t\t\t\t\t"
-		                + "\n\t\t\t\t\t\t\t  [A] Main Admin"
+		                + "\n\t\t\t\t\t\t\t\t  [A] Main Admin"
 		                + "\t  [S] Semi Admin "
 		                + "\t  [G] Guest\n"
-                                + "\n\t\t\t\t\t\t\t\t\t\t    Your Input: ");
+                                + "\n\t\t\t\t\t\t\t\t\t\t\t  Your Input: ");
 		        Purpose = scn.next().toUpperCase();
 		        
 		        switch(Purpose) {
@@ -167,7 +168,7 @@ public class GOVERNMENTAGENCY {
 		        case "S":
                                 Semi_Admin_Login();
                                 BDMQuestions();
-                                BDM = scn.next();
+                                BDM = scn.next().toUpperCase();
                                 
                                 switch(BDM){
                                     case "B":
@@ -184,7 +185,7 @@ public class GOVERNMENTAGENCY {
 		        case "G":
 		        	do {
 		        	   System.out.println();
-		               System.out.print("\t\t\t------------------------------------------------------------------------------------------------------------------------"
+		               System.out.print("\t\t\t----------------------------------------------------------------------------------------------------------------------------------------------"
 		                       + "\n\t\t\t\t\t\t\t\t\t\tGovernment Agency"
 		                       + "\n\t\t\t\t\t\t\t\t\t\t[F] Fill Up Form"
 		                       + "\n\t\t\t\t\t\t\t\t\t\t[R] Request Copy"
@@ -232,7 +233,7 @@ public class GOVERNMENTAGENCY {
                                         System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
                                         System.out.println("\t\t\t\t\t\tThank You for Registering!");
                                         System.out.println("\t\t\t\t\t\tWarning do not show this code to anyone!!!!");
-                                        System.out.println("\t\t\t\tHeres your Code Number if you ever wanted the Copy of the certificate: B" + CCode_Num);
+                                        System.out.println("\t\t\t\tHeres your Code Number if you ever wanted the Copy of the certificate: C" + CCode_Num);
                                         System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
                                         CCode_Num++;
                                         break;
@@ -525,7 +526,7 @@ public class GOVERNMENTAGENCY {
                    
                    System.out.print("\t\t\t\t7M. Mother Age at time of this birth: ");
                    Mage = scn.next();
-                   while(!Mage.matches("[0-1]*")){
+                   while(!Mage.matches("[0-9]*")){
                    System.out.println("\t\t\t\tInvalid Input!");
                    System.out.print("\t\t\t\t7M. Mother Age at time of this birth: ");
                    Mage = scn.next();
@@ -544,7 +545,7 @@ public class GOVERNMENTAGENCY {
                    
                    System.out.print("\t\t\t\t9M. Residence Munipality: ");
                    MCity = scn.nextLine().toUpperCase();
-                   while(!MCity.matches("[A-Z]*")){
+                   while(!MCity.matches("[0-9|A-Z]*")){
                    System.out.println("\t\t\t\tInvalid Input!");
                    System.out.print("\t\t\t\t9M. Residence Munipality: ");
                    MCity = scn.nextLine().toUpperCase();
@@ -624,7 +625,7 @@ public class GOVERNMENTAGENCY {
                    
                    System.out.print("\t\t\t\t7F. Father Age at time of this birth: ");
                    Fage = scn.next();
-                   while(!Fage.matches("[0-1]*")){
+                   while(!Fage.matches("[0-9]*")){
                    System.out.println("\t\t\t\tInvalid Input!");
                    System.out.print("\t\t\t\t7F. Father Age at time of this birth: ");
                    Fage = scn.next();
@@ -634,7 +635,7 @@ public class GOVERNMENTAGENCY {
                    System.out.print("\t\t\t\t8F. Residence(House Number/Steet, Barangay): ");
                    scn.nextLine();
                    FHos = scn.nextLine().toUpperCase();
-                   while(!FHos.matches("[A-Z]*")){
+                   while(!FHos.matches("[0-9|A-Z]*")){
                    System.out.println("\t\t\t\tInvalid Input!");
                    System.out.print("\t\t\t\t8F. Residence(House Number/Steet, Barangay): ");
                    FHos = scn.nextLine().toUpperCase();
@@ -689,7 +690,7 @@ public class GOVERNMENTAGENCY {
              for(String a: Birth_editor) {
 		               System.out.println(a);
 		System.out.print("\t\t\t\t\t" + a + " " + Birth_Ques.get(a));
-                String change = scn.nextLine();
+                String change = scn.nextLine().toUpperCase();
        
                     switch(a){
                             case "1A":
@@ -2204,7 +2205,7 @@ System.out.println("\t\t\t======================================================
                     System.out.println("\t\t\t\t\t\t|Approve = Waiting for the user to pay              |");
                     System.out.println("\t\t\t\t\t\t-----------------------------------------------------");
 
-                    for(Map.Entry<Object, String> eh : Cenomar_Code.entrySet()){
+                    for(Map.Entry<Object, String> eh : Cenomar_CCode.entrySet()){
                 
                     if(Cenomar_CCode.get(eh.getKey()) == "Approve"){
                     System.out.printf("\t\t\t\t\t\t| %-11s| %-20s| %-15s|\n",eh.getKey() , eh.getValue() , Cenomar_CCode.get(eh.getKey()));
@@ -2212,8 +2213,13 @@ System.out.println("\t\t\t======================================================
                             }                   
                     }
              
-             
-        System.out.println("\t\t\t\t\t\t-----------------------------------------------------");
+             if(!Cenomar_Code.isEmpty()){
+                
+                System.out.println("\t\t\t\t\t\t-----------------------------------------------------");
+                System.out.println("\t\t\t\t\t\t|                                                    |");
+                System.out.println("\t\t\t\t\t\t-----------------------------------------------------");
+            }else{
+                    System.out.println("\t\t\t\t\t\t-----------------------------------------------------");
                     System.out.println("\t\t\t\t\t\t|Denied = Request Due to Invalid Inputs             |");
                     System.out.println("\t\t\t\t\t\t-----------------------------------------------------");
                     
@@ -2224,10 +2230,14 @@ System.out.println("\t\t\t======================================================
                     System.out.printf("\t\t\t\t\t\t| %-11s| %-20s| %-15s|\n",eh.getKey() , eh.getValue() , Cenomar_CCode.get(eh.getKey()));
                         
                             }
-                        
+                        }
                     }
-         
-       
+             if(!Cenomar_Code.isEmpty()){
+                
+                System.out.println("\t\t\t\t\t\t-----------------------------------------------------");
+                System.out.println("\t\t\t\t\t\t|                                                    |");
+                System.out.println("\t\t\t\t\t\t-----------------------------------------------------");
+            }else{
                     System.out.println("\t\t\t\t\t\t-----------------------------------------------------");
                     System.out.println("\t\t\t\t\t\t|Done = Done with the transaction                   |");
                     System.out.println("\t\t\t\t\t\t-----------------------------------------------------");
@@ -2239,7 +2249,7 @@ System.out.println("\t\t\t======================================================
                     System.out.printf("\t\t\t\t\t\t| %-11s| %-20s| %-15s|\n",eh.getKey() , eh.getValue() , Cenomar_CCode.get(eh.getKey()));
                         
                             }
-                        
+                        }
                     }
         System.out.println("\t\t\t\t\t\t-----------------------------------------------------");
         }
@@ -2441,7 +2451,7 @@ System.out.println("\t\t\t======================================================
                                     System.out.println("--------------------------------------------------------");
                                     
                                     for(Map.Entry<Object, String> eh: Cenomar_Code.entrySet()){
-                                        if(Cenomar_CCode.get(eh.getKey()) == "Deleted"){
+                                        if(Birth_ACode.get(eh.getKey()) == "Deleted"){
                                             
                                         System.out.printf("| %-15s| %-20s| %-15s|\n", eh.getKey(), eh.getValue(), Cenomar_CCode.get(eh.getKey()));
                                         }
@@ -2450,11 +2460,10 @@ System.out.println("\t\t\t======================================================
                                     System.out.println("--------------------------------------------------------");;
                                     
                                     System.out.print("Enter the code you want to view: ");
-                                    CFill = scn.next().toUpperCase();
+                                    BFill = scn.next().toUpperCase();
                                     
                                     if(Cenomar_Code.containsKey(CFill)){
                                         Marriage.setCenoName(Cenomar_Code.get(CFill));
-                                        System.out.println(Cenomar_Delete);
                                         Admin_Cenomar_View();
                                     }else{
                                         InvalidErrors();
@@ -2464,16 +2473,16 @@ System.out.println("\t\t\t======================================================
         }
         public static void Cenomar_Edit_Store(){
             
-                Admin_CStore.put("1p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName(), Cenomar_Storage.remove("1p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
-                Admin_CStore.put("2p" +  CFill.substring(CFill.length()-1) +Marriage.getCenoName(), Cenomar_Storage.remove("1p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName())); 
-                Admin_CStore.put("3p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName(), Cenomar_Storage.remove("1p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
-                Admin_CStore.put("4p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName(), Cenomar_Storage.remove("1p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
-                Admin_CStore.put("5p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName(), Cenomar_Storage.remove("1p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName())); 
-                Admin_CStore.put("6p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName(), Cenomar_Storage.remove("1p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
-                Admin_CStore.put("7p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName(), Cenomar_Storage.remove("1p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
-                Admin_CStore.put("8p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName(), Cenomar_Storage.remove("1p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
-		Admin_CStore.put("9p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName(), Cenomar_Storage.remove("1p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
-		Admin_CStore.put("10p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName(), Cenomar_Storage.remove("1p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
+        	Admin_CStore.put("1p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName(), Cenomar_Storage.remove("1p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
+            Admin_CStore.put("2p" +  CFill.substring(CFill.length()-1) +Marriage.getCenoName(), Cenomar_Storage.remove("1p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName())); 
+            Admin_CStore.put("3p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName(), Cenomar_Storage.remove("1p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
+            Admin_CStore.put("4p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName(), Cenomar_Storage.remove("1p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
+            Admin_CStore.put("5p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName(), Cenomar_Storage.remove("1p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName())); 
+            Admin_CStore.put("6p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName(), Cenomar_Storage.remove("1p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
+            Admin_CStore.put("7p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName(), Cenomar_Storage.remove("1p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
+            Admin_CStore.put("8p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName(), Cenomar_Storage.remove("1p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
+	   Admin_CStore.put("9p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName(), Cenomar_Storage.remove("1p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
+	Admin_CStore.put("10p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName(), Cenomar_Storage.remove("1p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
         }
         public static void displayCenomar(){
             System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
@@ -2509,20 +2518,6 @@ System.out.println("\t\t\t======================================================
             System.out.println("\t\t\t\t10p. Mother's Name " +  Cenomar_Storage.get("10p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
         }
         public static void Admin_Cenomar_View(){
-            System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
-            System.out.println("\n\t\t\t\tHUSBAND'S INFORMATION\n");
-            System.out.println("\n\t\t\t\t1p. First Name: " + Cenomar_Delete.get("1P" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
-            System.out.println("\t\t\t\t2p. Date of Birth (MM/DD/YYYY): " +  Cenomar_Delete.get("2p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
-            System.out.println("\t\t\t\t3p. Place of Birth: " +  Cenomar_Delete.get("3p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
-            System.out.println("\t\t\t\t4p. Father's Name " +  Cenomar_Delete.get("4p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
-            System.out.println("\t\t\t\t5p. Mother's Name " +  Cenomar_Delete.get("5p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
-            System.out.println("\t\t\t------------------------------------------------------------------------------------------------------------------------");
-            System.out.println("\n\t\t\t\tWIFE'S INFORMATION\n");
-            System.out.println("\n\t\t\t\t6p. First Name: " +  Cenomar_Delete.get("6p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
-            System.out.println("\t\t\t\t7p. Date of Birth (MM/DD/YYYY): " +  Cenomar_Delete.get("7p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
-            System.out.println("\t\t\t\t8p. Place of Birth: " +  Cenomar_Delete.get("8p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
-            System.out.println("\t\t\t\t9p. Father's Name " +  Cenomar_Delete.get("9p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
-            System.out.println("\t\t\t\t10p. Mother's Name " +  Cenomar_Delete.get("10p" + CFill.substring(CFill.length()-1) + Marriage.getCenoName()));
             
         }
     // Start of Marraige
